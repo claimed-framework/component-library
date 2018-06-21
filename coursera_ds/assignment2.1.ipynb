@@ -1,0 +1,256 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Assignment 2\n",
+    "Welcome to Assignment 2. This will be fun. It is the first time you actually access external data from ApacheSpark. \n",
+    "\n",
+    "Just make sure you hit the play button on each cell from top to down. There are three functions you have to implement. Please also make sure than on each change on a function you hit the play button again on the corresponding cell to make it available to the rest of this notebook.\n",
+    "\n",
+    "##### Please also make sure to only implement the function bodies and DON'T add any additional code outside functions since this might confuse the autograder."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "So the function below is used to make it easy for you to create a data frame from a cloudant data frame using the so called \"DataSource\" which is some sort of a plugin which allows ApacheSpark to use different data sources."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "#Please don't modify this function\n",
+    "def readDataFrameFromCloudant(database):\n",
+    "    cloudantdata=spark.read.load(database, \"org.apache.bahir.cloudant\")\n",
+    "\n",
+    "    cloudantdata.createOrReplaceTempView(\"washing\")\n",
+    "    spark.sql(\"SELECT * from washing\").show()\n",
+    "    return cloudantdata"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is the first function you have to implement. You are passed a dataframe object. We've also registered the dataframe in the ApacheSparkSQL catalog - so you can also issue queries against the \"washing\" table using \"spark.sql()\". Hint: To get an idea about the contents of the catalog you can use: spark.catalog.listTables().\n",
+    "So now it's time to implement your first function. You are free to use the dataframe API, SQL or RDD API. In case you want to use the RDD API just obtain the encapsulated RDD using \"df.rdd\". You can test the function by running one of the three last cells of this notebook, but please make sure you run the cells from top to down since some are dependant of each other..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def count(df,spark):\n",
+    "    #TODO Please enter your code here\n",
+    "    return "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "No it's time to implement the second function. Please return an integer containing the number of fields. The most easy way to get this is using the dataframe API. Hint: You might find the dataframe API documentation useful: http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def getNumberOfFields(df,spark):\n",
+    "    #TODO Please enter your code here\n",
+    "    return "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finally, please implement a function which returns a (python) list of string values of the field names in this data frame. Hint: Just copy&past doesn't work because the auto-grader will create a random data frame for testing, so please use the data frame API as well. Again, this is the link to the documentation: http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def getFieldNames(df,spark):\n",
+    "    #TODO Please enter your code here\n",
+    "    return "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### PLEASE DON'T REMOVE THIS BLOCK - THE FOLLOWING CODE IS NOT GRADED\n",
+    "#axx\n",
+    "### PLEASE DON'T REMOVE THIS BLOCK - THE FOLLOWING CODE IS NOT GRADED\n",
+    "So after this block you can basically do what you like since the auto-grader is not considering this part of the notebook"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now it is time to connect to the cloudant database. Please have a look at the Video \"Overview of end-to-end scenario\" of Week 2 starting from 6:40 in order to learn how to obtain the credentials for the database. Please paste this credentials as strings into the below code\n",
+    "\n",
+    "### TODO Please provide your Cloudant credentials here"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hostname = \"\"\n",
+    "user = \"\"\n",
+    "pw = \"\"\n",
+    "database = \"washing\" #as long as you didn't change this in the NodeRED flow the database name stays the same"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "spark = SparkSession\\\n",
+    "    .builder\\\n",
+    "    .appName(\"Cloudant Spark SQL Example in Python using temp tables\")\\\n",
+    "    .config(\"cloudant.host\",hostname)\\\n",
+    "    .config(\"cloudant.username\", user)\\\n",
+    "    .config(\"cloudant.password\",pw)\\\n",
+    "    .getOrCreate()\n",
+    "cloudantdata=readDataFrameFromCloudant(database)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The following cell can be used to test your count function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "count(cloudantdata,spark)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The following cell can be used to test your getNumberOfFields function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "11"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "getNumberOfFields(cloudantdata,spark)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The following cell can be used to test your getFieldNames function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['_id',\n",
+       " '_rev',\n",
+       " 'count',\n",
+       " 'flowrate',\n",
+       " 'fluidlevel',\n",
+       " 'frequency',\n",
+       " 'hardness',\n",
+       " 'speed',\n",
+       " 'temperature',\n",
+       " 'ts',\n",
+       " 'voltage']"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "getFieldNames(cloudantdata,spark)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Congratulations, you are done. So please export this notebook as python script using the \"File->Download as->Python (.py)\" option in the menue of this notebook. This file should be named \"assignment2.1.py\" and uploaded to the autograder of week2."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 2 with Spark 2.0",
+   "language": "python",
+   "name": "python2-spark20"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
