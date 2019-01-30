@@ -1,0 +1,30 @@
+gen_wave = function(double freq, double amp, integer T, integer Hz, double pi_value) return (matrix[double] x) {
+
+  time = seq(0, T - T/Hz, T/Hz)
+  x = amp*sin(2*pi_value*freq*time)
+
+}
+
+PI = 3.141592654
+
+x = gen_wave(2, 1, 1, 50, PI)
+N = nrow(x)
+
+#print(toString(x, sep="\t\t", decimal=1))
+#print(N)
+
+n = seq(0, N-1, 1)
+k = seq(0, N-1, 1)
+
+M = (n %*% t(k))*(2*PI/N)
+
+Xa = cos(M) %*% x
+Xb = sin(M) %*% x
+
+DFT = cbind(Xa, Xb)
+
+MAG = sqrt(DFT[,1]^2 + DFT[,2]^2)
+MAG = MAG[1:ceil(N/2),]*2/N
+
+print(toString(MAG, sep="\t\t", decimal=1))
+
