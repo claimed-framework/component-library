@@ -49,7 +49,7 @@ def submitAll(submitterEmail,secret,key,parts_and_data):
             print ("-------------------------")
 
                 
-import zipfile
+import zipfile, os
 
 def zipit(target, path):
     zipf = zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED)
