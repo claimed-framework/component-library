@@ -47,3 +47,13 @@ def submitAll(submitterEmail,secret,key,parts_and_data):
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
+
+                
+import zipfile
+
+def zipit(target, path):
+    zipf = zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED)
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            zipf.write(os.path.join(root, file))
+    zipf.close()
