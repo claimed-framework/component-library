@@ -1,4 +1,5 @@
 import requests, json
+import zipfile, os
 
 def submit(submitterEmail,secret,key,submission_part, all_parts, data):
         submission = {
@@ -48,8 +49,6 @@ def submitAll(submitterEmail,secret,key,parts_and_data):
             print (response.text)
             print ("-------------------------")
 
-                
-import zipfile, os
 
 def zipit(target, path):
     zipf = zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED)
