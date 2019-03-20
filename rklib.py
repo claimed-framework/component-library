@@ -1,5 +1,6 @@
 import requests, json
-import zipfile, os
+import zipfile
+from os import walk
 
 def submit(submitterEmail,secret,key,submission_part, all_parts, data):
         submission = {
@@ -52,7 +53,7 @@ def submitAll(submitterEmail,secret,key,parts_and_data):
 
 def zipit(target, path):
     zipf = zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED)
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in walk(path):
         for file in files:
             zipf.write(os.path.join(root, file))
     zipf.close()
