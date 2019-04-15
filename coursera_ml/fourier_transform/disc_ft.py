@@ -17,7 +17,7 @@ from numpy.fft import fft
 
 def gen_wave (freq, amp, T, sr):
 
-    time = np.arange(0,T,T/sr)
+    time = np.arange(0,T,1/sr)
     
     X = amp*np.sin(2*np.pi*freq*time)
     
