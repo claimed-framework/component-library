@@ -1,0 +1,128 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is the first assignment for the Coursera course \"Advanced Machine Learning and Signal Processing\"\n",
+    "\n",
+    "Just execute all cells one after the other and you are done - just note that in the last one you have to update your email address (the one you've used for coursera) and obtain a submission token, you get this from the programming assignment directly on coursera."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!wget https://github.com/IBM/coursera/raw/master/coursera_ml/a2.parquet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df=spark.read.load('a2.parquet')\n",
+    "\n",
+    "df.createOrReplaceTempView(\"df\")\n",
+    "spark.sql(\"SELECT * from df\").show()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!rm -Rf a2_m1.json"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = df.repartition(1)\n",
+    "df.write.json('a2_m1.json')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!rm -f rklib.py\n",
+    "!wget https://raw.githubusercontent.com/IBM/coursera/master/rklib.py"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import zipfile\n",
+    "\n",
+    "def zipdir(path, ziph):\n",
+    "    for root, dirs, files in os.walk(path):\n",
+    "        for file in files:\n",
+    "            ziph.write(os.path.join(root, file))\n",
+    "\n",
+    "zipf = zipfile.ZipFile('a2_m1.json.zip', 'w', zipfile.ZIP_DEFLATED)\n",
+    "zipdir('a2_m1.json', zipf)\n",
+    "zipf.close()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!base64 a2_m1.json.zip > a2_m1.json.zip.base64"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from rklib import submit\n",
+    "key = \"1injH2F0EeiLlRJ3eJKoXA\"\n",
+    "part = \"wNLDt\"\n",
+    "email = \"shashikapoorc@gmail.com\"\n",
+    "secret = \"aeGE9FbM4lfnXpHl\"\n",
+    "\n",
+    "with open('a2_m1.json.zip.base64', 'r') as myfile:\n",
+    "    data=myfile.read()\n",
+    "submit(email, secret, key, part, [part], data)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3.5 with Spark",
+   "language": "python3",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
