@@ -13,20 +13,7 @@
 # 
 # http://www.andrewjanowczyk.com/use-case-6-invasive-ductal-carcinoma-idc-segmentation/
 
-# In[ ]:
 
-
-get_ipython().system('if [ -f IDC_regular_ps50_idx5.zip ]; then echo "images already downloaded"; else wget http://andrewjanowczyk.com/wp-static/IDC_regular_ps50_idx5.zip; fi')
-get_ipython().system('if [ -d images ]; then echo "images folder already created"; else echo "creating images folder and unzipping "; mkdir images;  unzip IDC_regular_ps50_idx5.zip -d images/ ; fi')
-
-
-# In[ ]:
-
-
-get_ipython().run_cell_magic('bash', '', 'mkdir imagesprep\nmkdir imagesprep/train\nmkdir imagesprep/train/0\nmkdir imagesprep/train/1\nmkdir imagesprep/test\nmkdir imagesprep/test/0\nmkdir imagesprep/test/1\n\ni=0\nfor file in `find images` -name ".png"; do \n    ((i++))\n    if ! ((i % 10 == 0)); then \n        if [[ $file == *"class0.png"* ]]; then \n            cp $file imagesprep/train/0/\n        elif [[ $file == *"class1.png"* ]]; then \n            cp $file imagesprep/train/1/\n        fi\n    else \n        if [[ $file == *"class0.png"* ]]; then \n            cp $file imagesprep/test/0/\n        elif [[ $file == *"class1.png"* ]]; then \n            cp $file imagesprep/test/1/\n        fi\n    fi\ndone')
-
-
-# In[ ]:
 
 
 from PIL import Image
@@ -35,7 +22,7 @@ import zipfile
 from os import walk
 import pandas as pd
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 
 from sklearn.model_selection import train_test_split
 
@@ -129,32 +116,6 @@ history = model.fit_generator(generator=train_generator,
 
 print(history.history.keys())
 
-
-# In[ ]:
-
-
-plt.figure(1, figsize = (15,8)) 
-    
-plt.subplot(221)  
-plt.plot(history.history['acc'])  
-plt.plot(history.history['val_acc'])  
-plt.title('model accuracy')  
-plt.ylabel('accuracy')  
-plt.xlabel('epoch')  
-plt.legend(['train', 'valid']) 
-    
-plt.subplot(222)  
-plt.plot(history.history['loss'])  
-plt.plot(history.history['val_loss'])  
-plt.title('model loss')  
-plt.ylabel('loss')  
-plt.xlabel('epoch')  
-plt.legend(['train', 'valid']) 
-
-plt.show()
-
-
-# In[ ]:
 
 
 
