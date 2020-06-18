@@ -1,4 +1,4 @@
-### This is the github project for the following Coursera specialization:
+### This is the github project for the following (C)oursera specialization:
 
 Advanced Data Science with IBM
 
