@@ -16,16 +16,16 @@ def submit(submitterEmail,secret,key,submission_part, all_parts, data):
                 submission["parts"][part] = dict()
         response = requests.post('https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1', data=json.dumps(submission))
         if response.status_code == 201:
-            print ("Submission successful, please check on the coursera grader page for the status")
+            print ("Submission successful, check on the Coursera grader page for the status")
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
         else:
-            print ("Something went wrong, please have a look at the reponse of the grader")
+            print ("Something went wrong, have a look at the reponse of the grader")
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
-            
+
 def submitAll(submitterEmail,secret,key,parts_and_data):
         submission = {
                     "assignmentKey": key,
@@ -40,12 +40,12 @@ def submitAll(submitterEmail,secret,key,parts_and_data):
                 submission["parts"][part] = dict()
         response = requests.post('https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1', data=json.dumps(submission))
         if response.status_code == 201:
-            print ("Submission successful, please check on the coursera grader page for the status")
+            print ("Submission successful, check on the Coursera grader page for the status")
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
         else:
-            print ("Something went wrong, please have a look at the reponse of the grader")
+            print ("Something went wrong, have a look at the reponse of the grader")
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
