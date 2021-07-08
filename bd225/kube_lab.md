@@ -1,21 +1,32 @@
+<center>
+<img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/5_FinalProject_Coursera/images/labs_module_1_images_IDSNlogo.png" width="300">
+</center>
+
 # Apache Spark on Kubernetes Lab
 > by @romeokienzler July 2021
 
-## Introduction
+## Objectives
+
+In this lab, you will:
+
+* Install *kind* - Kubernetes in Docker - an easy way to install and run a Kubernetes cluster inside a single docker container
+* Create a so called *Kubernetes Pod* - a set of containers running inside Kubernetes - here, containing Apache Spark which we use to submit jobs against Kubernetes
+* Submit Apache Spark jobs to Kubernetes 
+
+## Prerequisites
+Note: If you are running this lab within the Skillsnetwort Lab environment, all prerequisites are already installed for you
+
+The only pre-requisites to this lab are:
+* A working *docker* installation
+* The *git* command line tool
+
+# Project Overview
 Welcome to the lab on how to submit Apache Spark applications to a Kubernetes cluster. This is straightforward thanks to the new native Kubernetes scheduler that has been added to Spark recently.
 
 Kubernetes is a container orchestrator which allows to schedule millions of "docker" containers on huge compute clusters containing thousands of compute nodes. Originally invented and open sourced by Google, Kubernetes became the de-facto standard for cloud native application development and deployment inside and outside IBM. With RedHat OpenShift, IBM is the leader in hybrid cloud Kubernetes and within the top three companies contributing to Kubernetes open source code base.
 
-The only pre-requisites to this lab are:
-1. A working *docker* installation
-1. The *git* command line tool
 
-In this lab you'll do the following:
-1. Install *kind* - Kubernetes in Docker - an easy way to install and run a Kubernetes cluster inside a single docker container
-1. Create a so called *Kubernetes Pod* - a set of containers running inside Kubernetes - here, containing Apache Spark which we use to submit jobs against Kubernetes
-1. Submit Apache Spark jobs to Kubernetes 
-
-## Install KIND - Kubernetes in Docker
+# Install KIND - Kubernetes in Docker
 On the right hand side to this instructions you'll see the Theia IDE. Please open a terminal by clicking on "Terminal->New Terminal".
 Please enter the following commands in the terminal:
 
