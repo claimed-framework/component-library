@@ -1,6 +1,8 @@
 # Utilities used by CLAIMED
 
 import os
+import re
+import sys
 import zipfile
 
 # compresses 'path' into 'target' zipfile
