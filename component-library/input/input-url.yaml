@@ -1,0 +1,25 @@
+name: Input URL
+description: This component reads a file from a HTTP(s) source via wget
+
+inputs:
+- {name: url, type: String, description: 'url of souce'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_data_csv, type: String, description: 'path and file name for output'}
+
+
+implementation:
+    container:
+        image: continuumio/anaconda3:2020.07
+        command:
+        - sh
+        - -ec
+        - |
+          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
+          wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/input/input-postgresql.ipynb
+          ipython ./input-postgresql.ipynb output_data_csv="$0" host="$1" database="$2" user="$3" password="$4" port="$5" sql="$6" data_dir="$7"
+        - {outputPath: output_data_csv}
+        - {inputValue: url}
+        - {inputValue: data_dir}
