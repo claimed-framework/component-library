@@ -1,0 +1,28 @@
+name: spark-ts-trends
+description: Computes trends of time series by fitting a low order polinomial
+
+
+inputs:
+- {name: data_parquet, type: String, description: 'data_parquet path and parquet file name (default: data.parquet)'}
+- {name: master, type: String, description: '@param master url of master (default: local mode)'}
+- {name: data_dir, type: String, description: 'data_dir temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_result_filename, type: String, description: 'output_result_filename parquet file name of result (default: trends.parquet)'}
+
+
+implementation:
+    container:
+        image: continuumio/anaconda3:2020.07
+        command:
+        - sh
+        - -ec
+        - |
+          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
+          wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/input/input-postgresql.ipynb
+          ipython ./input-postgresql.ipynb output_data_csv="$0" host="$1" database="$2" user="$3" password="$4" port="$5" sql="$6" data_dir="$7"
+        - {outputPath: output_result_filename}
+        - {inputValue: data_parquet}
+        - {inputValue: master}
+        - {inputValue: data_dir}
