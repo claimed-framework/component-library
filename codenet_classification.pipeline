@@ -138,7 +138,8 @@
                 "api_key=NuiXkNDgrTVfDYbDJqui46Cxg4eiofbNL9PK9sk235YX",
                 "space=2365332e-139b-4e1d-a320-06c45f618b0b",
                 "location=us-south",
-                "deployment_name=codenet"
+                "deployment_name=codenet",
+                "data_dir=./"
               ],
               "dependencies": [],
               "include_subdirectories": false
