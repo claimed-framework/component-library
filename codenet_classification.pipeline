@@ -135,10 +135,11 @@
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
-                "api_key=NuiXkNDgrTVfDYbDJqui46Cxg4eiofbNL9PK9sk235YX",
+                "api_key=",
                 "space=2365332e-139b-4e1d-a320-06c45f618b0b",
-                "location=us_south",
-                "deployment_name=codenet"
+                "location=us-south",
+                "deployment_name=codenet",
+                "data_dir=./"
               ],
               "dependencies": [],
               "include_subdirectories": false
@@ -193,7 +194,7 @@
         "ui_data": {
           "comments": []
         },
-        "version": 4,
+        "version": 5,
         "properties": {
           "name": "codenet_classification",
           "runtime": "Generic"
