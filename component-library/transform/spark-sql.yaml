@@ -4,7 +4,8 @@ description: Execute arbitrary SQL queries againts CSV and PARQUET files
 inputs:
 - {name: data_file, type: String, description: 'file name for CSV or PARQUET file - must end with .csv or .parquet (default: data.csv)'}
 - {name: master, type: String, description: 'master url of spark master (default: local mode)'}
-- {name: data_dir, type: String, description: 'sql statement to execute, table name == df, example: select * from df'}
+- {name: data_dir, type: String, description: 'data_dir temporal data storage for local execution (default: ../../data/)'}
+- {name: sql, type: String, description: 'sql statement to execute, table name == df, example: select * from df'}
 
 
 outputs:
@@ -25,3 +26,4 @@ implementation:
         - {inputValue: data_file}
         - {inputValue: master}
         - {inputValue: data_dir}
+        - {inputValue: sql}

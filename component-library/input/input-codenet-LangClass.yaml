@@ -1,13 +1,13 @@
-name: Model Blessing
-description: Assesses metrics of an asset (ML model, dashboard, report, ...) and decides on readyness for production deployment. 
+name: Pulls Codenet classification data from the ml-exchange.org
+description: Pulls Codenet classification data.zip from the ml-exchange.org in a form ready for text classification in the folowing format:
 
 
 inputs:
-- {name: expression, type: String, description: 'expression in python to be evaluated'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
 
 
 outputs:
-- {name: output_result_filename, type: String, description: 'output_result_filename (default: result.txt)'}
+- {name: output_filename, type: String, description: 'file name for training data zip'}
 
 
 implementation:
@@ -20,5 +20,5 @@ implementation:
           mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
           wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/input/input-postgresql.ipynb
           ipython ./input-postgresql.ipynb output_data_csv="$0" host="$1" database="$2" user="$3" password="$4" port="$5" sql="$6" data_dir="$7"
-        - {outputPath: output_result_filename}
-        - {inputValue: expression}
+        - {outputPath: output_filename}
+        - {inputValue: data_dir}
