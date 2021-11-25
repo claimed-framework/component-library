@@ -1,0 +1,40 @@
+name: ibm_sql_query
+description: Execute arbitrary SQL queries against CSV and PARQUET files using IBM Cloud SQL Query and Cloud Object Store
+
+inputs:
+- {name: api_key, type: String, description: 'IBM Cloud API key (alternative to token)'}
+- {name: token, type: String, description: 'IBM Cloud Token (alternative to API key)'}
+- {name: sql_query_crn, type: String, description: '(unique) Custom Resource Name (CRN) of IBM SQL Query Service'}
+- {name: sql, type: String, description: 'sql statement to execute ()'}
+
+inputs:
+- {name: api_key, type: String, description: 'IBM Cloud API key'}
+- name: sql_query_crn
+  type: String
+  description: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
+  annotations:
+    input_type: instancecrn
+- name: sql
+  type: String
+  description: sql statement to execute
+  annotations:
+    input_type: sql_textarea
+outputs:
+- {name: output_result_file_uri, type: String, description: 'URI of resulting file (example: cos://s3.eu-de.cloud-object-storage.appdomain.cloud/cos-rkie-sqlquery-test/result)'}
+
+
+implementation:
+    container:
+        image: continuumio/anaconda3:2020.07
+        command:
+        - sh
+        - -ec
+        - |
+          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
+          wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/transform/ibm-sql-query.ipynb
+          ipython ibm-sql-query.ipynb output_result_file_uri="$0" api_key="$1" token="$2" sql_query_crn="$3" sql="$4" 
+        - {outputPath: output_result_file_uri}
+        - {inputValue: api_key}
+        - {inputValue: token}
+        - {inputValue: sql_query_crn}
+        - {inputValue: sql}
