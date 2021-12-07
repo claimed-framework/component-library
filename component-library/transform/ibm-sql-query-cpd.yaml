@@ -14,7 +14,7 @@ inputs:
   description: sql statement to execute
   annotations:
     input_type: sql_textarea
-- {name: out_format, type: String, description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
+- {name: out_format, type: String, default: 'csv', description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
 - {name: out_partition_columns, type: String, description: 'if set - will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
 - {name: out_number_of_objects, type: String, description: 'will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
 - {name: out_rows_per_object, type: String, description: 'will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
