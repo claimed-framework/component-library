@@ -27,3 +27,5 @@ RUN microdnf update -y \
         wget curl
         
 RUN pip install --upgrade ipython
+
+RUN pip install --upgrade nbformat==5.1.3
