@@ -27,7 +27,7 @@ outputs:
 
 implementation:
     container:
-        image: continuumio/anaconda3:2020.07
+        image: romeokienzler/ibm-sql-query:latest
         command:
         - sh
         - -ec
