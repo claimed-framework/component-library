@@ -1,6 +1,6 @@
 <!--
 {% comment %}
-Copyright 2018-2021 ELYRA AUTHORS
+Copyright 2018-2021 Elyra Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 {% endcomment %}
 -->
-
+ 
+ READ ME 
 # CLAIMED - The Component Library for AI, Machine Learning, ETL, and Data Science
 
 This repository contains the CLAIMED library [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
