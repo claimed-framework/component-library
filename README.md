@@ -1,5 +1,5 @@
 <!--
-{% comment %}
+{% Comment %}
 Copyright 2018-2021 Elyra Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
