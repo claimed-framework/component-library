@@ -130,68 +130,6 @@
           ]
         },
         {
-          "id": "1a951bdd-c2d2-458e-a2c7-07a90c6d7437",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "table=destatis",
-                "data_dir=../../data/",
-                "data_csv=12613-0004_flat.csv",
-                "delimiter=;"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "output-rdbms-sqlalchemy.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 50,
-              "y_pos": 165,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              }
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
           "id": "8e6fc787-6d42-4611-b5b7-aa632cf9ba0b",
           "type": "execution_node",
           "op": "execute-notebook-node",
@@ -258,72 +196,6 @@
           ]
         },
         {
-          "id": "d1039ed1-0995-4ee1-9553-e84535556b13",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=drop view if exists destatis_view"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 290,
-              "y_pos": 165,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "6a688ce3-6108-4882-b9c8-28655fc7c922",
-                  "node_id_ref": "1a951bdd-c2d2-458e-a2c7-07a90c6d7437",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
           "id": "4e9212f4-3a32-4afc-91e0-9be913741022",
           "type": "execution_node",
           "op": "execute-notebook-node",
@@ -369,72 +241,6 @@
                 {
                   "id": "ab5dadd6-7aef-42b3-8942-6b4fd8f89fa5",
                   "node_id_ref": "8e6fc787-6d42-4611-b5b7-aa632cf9ba0b",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "6efbc554-65c8-4ba3-a378-7faae105f712",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=create or replace view destatis_view as SELECT to_date(zeit::text, '%YYYY'::text) as timestamp, sum(t.bev002__gestorbene__anzahl::int) FROM public.destatis t where t.\"4_auspraegung_label\" = 'Insgesamt' group by zeit"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 530,
-              "y_pos": 165,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "6634db74-3b2a-44ea-b64c-b75287cd0bca",
-                  "node_id_ref": "d1039ed1-0995-4ee1-9553-e84535556b13",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -704,6 +510,134 @@
               }
             }
           ]
+        },
+        {
+          "id": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "table=destatis6",
+                "data_dir=../../data/",
+                "data_csv=12613-0006_flat.csv",
+                "delimiter=;"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "output-rdbms-sqlalchemy.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 49,
+              "y_pos": 152,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "b16810e2-4bab-45ef-83a2-15119fc51b0e",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "sql_file=../../covid19.sql"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "alchemy-sql-query.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 289,
+              "y_pos": 152,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6e440259-e150-42f3-a031-82a49dfc0153",
+                  "node_id_ref": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
         }
       ],
       "app_data": {
@@ -731,11 +665,7 @@
               "height": 42,
               "class_name": "d3-comment-rect",
               "content": "DESTATIS",
-              "associated_id_refs": [
-                {
-                  "node_ref": "1a951bdd-c2d2-458e-a2c7-07a90c6d7437"
-                }
-              ]
+              "associated_id_refs": []
             },
             {
               "id": "be026166-c29f-48c1-8f5a-662fb63832e2",
