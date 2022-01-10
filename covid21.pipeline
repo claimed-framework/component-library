@@ -14,7 +14,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "input-url.ipynb",
+              "filename": "component-library/input/input-url.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -68,7 +68,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../output/output-rdbms-sqlalchemy.ipynb",
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -135,7 +135,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../output/output-rdbms-sqlalchemy.ipynb",
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -197,7 +197,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../transform/alchemy-sql-query.ipynb",
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -263,7 +263,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../transform/alchemy-sql-query.ipynb",
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -329,7 +329,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../transform/alchemy-sql-query.ipynb",
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -395,7 +395,7 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../transform/alchemy-sql-query.ipynb",
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
               "runtime_image": "continuumio/anaconda3:2020.07",
               "outputs": [],
               "env_vars": [
@@ -553,6 +553,138 @@
                 {
                   "id": "5dd7b0f2-0c6a-4535-a550-7d883aaa0730",
                   "node_id_ref": "25ad6463-e1c1-4333-8aa2-32f5e698bca0",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "c4d79656-b525-4705-af1a-e083769f0859",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "sql=drop view if exists rki_covid_deaths_view"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "alchemy-sql-query.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 530,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ba77786c-6030-4041-b35a-f4fe136daad1",
+                  "node_id_ref": "60e61e81-f0ce-4d8c-bdb8-57d5e68c4b98",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "aaee40e4-6242-4876-b888-f25e74270cd2",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "sql=create or replace view rki_covid_deaths_view as SELECT replace(t.\"anzahl verstorbene covid-19 fã¤lle\",'<','1')::int as value      , TO_DATE(CONCAT(sterbejahr, sterbewoche), 'IYYYIW') as timestamp FROM public.rki_covid_deaths t order by sterbejahr, sterbewoche asc"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "alchemy-sql-query.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 770,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "c5069513-b6e2-4ba1-badd-cbb70def09e1",
+                  "node_id_ref": "c4d79656-b525-4705-af1a-e083769f0859",
                   "port_id_ref": "outPort"
                 }
               ]
