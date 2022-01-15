@@ -24,6 +24,7 @@ IMPORTANT: This library is currently targeted for research purposes only and usa
 This library contains usable exemplars of components implemented as Jupyter notebooks. Those are tailored for the ElyraAI pipeline editor but of course can be used in other contexts as well.
 
 Each notebook is following a similar format.
+---------------------------------------------------------------------------------
 
 1. The first cell contains a description of the component itself.
 2. The second cell installs all dependencies using pip3.
