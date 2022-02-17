@@ -1,42 +1,43 @@
-name: ibm_sql_query_cpd
+name: ibm_sql_query
 description: Execute arbitrary SQL queries against CSV and PARQUET files using IBM Cloud SQL Query and Cloud Object Store
 
 inputs:
+- {name: token, type: String, description: 'IBM Cloud Token (alternative to API key)'}
+- name: sql_query_crn
+  type: String
+  description: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
+  annotations:
+    input_type: instancecrn
+- name: sql
+  type: String
+  description: sql statement to execute
+  annotations:
+    input_type: sql_textarea
 - {name: target_dir_path, type: String, description: 'target dir_path'}
 - {name: target_asset_name, type: String, description: 'target asset name'}
-- {name: sql, type: String, description: 'sql statement to execute ()'}
 - {name: token, type: String, description: 'IBM Cloud Token (alternative to API key)'}
-- {name: sql_query_crn, type: String, description: '(unique) Custom Resource Name (CRN) of IBM SQL Query Service'}
 - {name: format, type: String, description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
 - {name: partition_columns, type: String, description: 'if set - will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
 - {name: number_of_objects, type: String, description: 'will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
 - {name: rows_per_object, type: String, description: 'will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
 - {name: exact_name, type: String, description: 'default: False - only valid when no partitioning option is specified. Will be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
-- {name: no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
-
-
-outputs:
-
-
+- {name: no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}    
+    
+    
 implementation:
     container:
-        image: continuumio/anaconda3:2020.07
+        image: romeokienzler/ibm-sql-query:latest
         command:
         - sh
         - -ec
         - |
-          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
-          wget xxx
-          ipython xxx target_dir_path="$0" target_asset_name="$1" sql="$2" token="$3" sql_query_crn="$4" format="$5" partition_columns="$6" number_of_objects="$7" rows_per_object="$8" exact_name="$9" no_jobid_folder="$10" 
-        - {outputPath: None}
-        - {inputValue: target_dir_path}
-        - {inputValue: target_asset_name}
-        - {inputValue: sql}
+          ipython ./ibm-sql-query.ipynb token="$0" sql_query_crn="$1" out_format="$2" out_partition_columns="$3" out_number_of_objects="$4" out_rows_per_object="$5" out_exact_name="$6" out_no_jobid_folder="$7" sql="$8" 
         - {inputValue: token}
         - {inputValue: sql_query_crn}
-        - {inputValue: format}
-        - {inputValue: partition_columns}
-        - {inputValue: number_of_objects}
-        - {inputValue: rows_per_object}
-        - {inputValue: exact_name}
-        - {inputValue: no_jobid_folder}
+        - {inputValue: out_format}
+        - {inputValue: out_partition_columns}
+        - {inputValue: out_number_of_objects}
+        - {inputValue: out_rows_per_object}
+        - {inputValue: out_exact_name}
+        - {inputValue: out_no_jobid_folder}
+        - {inputValue: sql}
