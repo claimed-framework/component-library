@@ -16,6 +16,7 @@ inputs:
 
 
 outputs:
+- {name: output_file_name, type: String, description: 'default: output.txt - output file name containing the CPD path of the resulting asset'}
 
 
 implementation:
@@ -26,9 +27,9 @@ implementation:
         - -ec
         - |
           mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
-          wget xxx
-          ipython xxx target_dir_path="$0" target_asset_name="$1" sql="$2" token="$3" sql_query_crn="$4" format="$5" partition_columns="$6" number_of_objects="$7" rows_per_object="$8" exact_name="$9" no_jobid_folder="$10" 
-        - {outputPath: None}
+          wget x
+          ipython y output_file_name="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" token="$4" sql_query_crn="$5" format="$6" partition_columns="$7" number_of_objects="$8" rows_per_object="$9" exact_name="$10" no_jobid_folder="$11" 
+        - {outputPath: output_file_name}
         - {inputValue: target_dir_path}
         - {inputValue: target_asset_name}
         - {inputValue: sql}
