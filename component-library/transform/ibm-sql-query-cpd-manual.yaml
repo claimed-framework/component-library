@@ -1,25 +1,46 @@
 name: ibm_sql_query_cpd
-description: Execute arbitrary SQL queries against CSV and PARQUET files using IBM Cloud SQL Query and Cloud Object Store
+description: Run arbitrary SQL based data transformation jobs on CSV and PARQUET data stored on Cloud Object Storage using IBM SQL Query. Transformation results are written stored back to Cloud Object Storage
 
 inputs:
-- {name: token, type: String, description: 'IBM Cloud Token (alternative to API key)'}
 - name: sql_query_crn
-  type: String
+  type:
+    InstanceCRN:
+      service_name: cloud-object-storage
+  optional:
   description: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
   annotations:
-    input_type: instancecrn
+    human_name: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
+    input_type: instancecrn 
 - name: sql
   type: String
   description: sql statement to execute
   annotations:
     input_type: sql_textarea
-- {name: target_dir_path, type: String, description: 'target dir_path'}
-- {name: target_asset_name, type: String, description: 'target asset name'}
-- {name: format, type: String, description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
-- {name: partition_columns, type: String, description: 'if set - will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
-- {name: number_of_objects, type: String, description: 'will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
-- {name: rows_per_object, type: String, description: 'will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
-- {name: exact_name, type: String, description: 'default: False - only valid when no partitioning option is specified. Will be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
+- name: target_dir_path
+  type:
+    InstanceCRN:
+      service_name: cloud-object-storage
+  optional:
+  description: COS URL where the results of the SQL job are to be stored
+  annotations:
+    human_name: COS URL where the results of the SQL job are to be stored
+- {name: target_asset_name, type: String, description: 'Asset name to register for the results written by the SQL job'}
+- name: format
+  description: default: CSV - (will be generated into according STORED AS … clause in the INTO clause)
+  annotations:
+    human_name: Format - default: CSV - (will be generated into according STORED AS … clause in the INTO clause)
+  default: appear
+  type: String
+  validators:
+    enum:
+    - value: CSV
+      human_name: CSV
+    - value: parquet
+      human_name: Parquet  
+- {name: partition_columns, type: String, description: 'optional, list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
+- {name: number_of_objects, type: String, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
+- {name: rows_per_object, type: String, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
+- {name: exact_name, type: String, description: 'default: False, only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
 - {name: no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
  
 outputs:
@@ -28,7 +49,7 @@ outputs:
 
 implementation:
     container:
-        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.1
+        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.2
         command:
         - sh
         - -ec
