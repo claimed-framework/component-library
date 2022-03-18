@@ -33,10 +33,16 @@ inputs:
   type: String
   validators:
     enum:
-    - value: CSV
+    - value: csv
       human_name: CSV
     - value: parquet
-      human_name: Parquet  
+      human_name: Parquet
+    - value: avro
+      human_name: Avro  
+    - value: orc
+      human_name: ORC  
+    - value: json
+      human_name: JSON  
 - {name: partition_columns, type: String, description: 'optional, list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
 - {name: number_of_objects, type: Integer,  default: 0, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
 - {name: rows_per_object, type: Integer, default: 0, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
