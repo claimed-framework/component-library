@@ -19,10 +19,7 @@ inputs:
   type:
     CPDPath:
       path_type: file
-- name: target_dir_path
-  type:
-    CPDPath:
-      path_type: file
+      datasource_type: bluemixcloudobjectstorage
   optional:
   description: COS URL where the results of the SQL job are to be stored
   annotations:
