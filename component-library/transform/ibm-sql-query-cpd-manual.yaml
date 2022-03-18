@@ -38,10 +38,10 @@ inputs:
     - value: parquet
       human_name: Parquet  
 - {name: partition_columns, type: String, description: 'optional, list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
-- {name: number_of_objects, type: String, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
-- {name: rows_per_object, type: String, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
-- {name: exact_name, type: String, description: 'default: False, only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
-- {name: no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
+- {name: number_of_objects, type: Integer,  default: 0, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
+- {name: rows_per_object, type: Integer, default: 0, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
+- {name: exact_name, type: Bool, default: False, description: 'only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
+- {name: no_jobid_folder, type: Bool, default: False, description: 'will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
  
 outputs:
 - {name: output_file_name, type: String, description: 'default: output.txt - output file name containing the CPD path of the resulting asset'}
