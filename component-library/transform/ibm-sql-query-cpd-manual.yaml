@@ -5,12 +5,11 @@ inputs:
 - name: sql_query_crn
   type:
     InstanceCRN:
-      service_name: cloud-object-storage
+      service_name: sql-query
   optional:
   description: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
   annotations:
     human_name: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
-    input_type: instancecrn 
 - name: sql
   type: String
   description: sql statement to execute
@@ -18,8 +17,12 @@ inputs:
     input_type: sql_textarea
 - name: target_dir_path
   type:
-    InstanceCRN:
-      service_name: cloud-object-storage
+    CPDPath:
+      path_type: file
+- name: target_dir_path
+  type:
+    CPDPath:
+      path_type: file
   optional:
   description: COS URL where the results of the SQL job are to be stored
   annotations:
