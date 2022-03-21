@@ -50,8 +50,15 @@ inputs:
 - {name: no_jobid_folder, type: Bool, default: False, description: 'will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
  
 outputs:
-- {name: output_file_name, type: String, description: 'default: output.txt - output file name containing the CPD path of the resulting asset'}
-
+- name: data_asset
+  type:
+    CPDPath:
+      path_type: resource
+      resource_type: asset
+      asset_type: data_asset
+  description: output file name containing the CPD path of the resulting asset
+  annotations:
+    human_name: Output file name containing the CPD path of the resulting asset
 
 implementation:
     container:
