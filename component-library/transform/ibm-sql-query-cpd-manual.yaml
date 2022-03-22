@@ -67,8 +67,8 @@ implementation:
         - sh
         - -ec
         - |
-          ipython ./ibm-sql-query.ipynb output_file_name="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" token="$4" sql_query_crn="$5" format="$6" partition_columns="$7" number_of_objects="$8" rows_per_object="$9" exact_name="$10" no_jobid_folder="$11" 
-        - {outputPath: output_file_name}
+          ipython ./ibm-sql-query.ipynb data_asset="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" token="$4" sql_query_crn="$5" format="$6" partition_columns="$7" number_of_objects="$8" rows_per_object="$9" exact_name="$10" no_jobid_folder="$11" 
+        - {outputPath: data_asset}
         - {inputValue: target_dir_path}
         - {inputValue: target_asset_name}
         - {inputValue: sql}
