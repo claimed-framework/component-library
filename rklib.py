@@ -21,7 +21,7 @@ def submit(submitterEmail,secret,key,submission_part, all_parts, data):
             print (response.text)
             print ("-------------------------")
         else:
-            print ("Something went wrong, please have a look at the reponse of the grader")
+            print ("Something went wrong, wtf Bro")
             print ("-------------------------")
             print (response.text)
             print ("-------------------------")
