@@ -62,7 +62,7 @@ outputs:
 
 implementation:
     container:
-        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.5
+        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.6
         command:
         - sh
         - -ec
