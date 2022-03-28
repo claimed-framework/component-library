@@ -30,6 +30,8 @@ Components of this library can be exported as:
 3. Standalone graphical components for the Elyra pipeline editor
 4. Standalone components to be run from the command line
 
+![Visually create pipelines from notebooks and run everywhere!]("https://github.com/IBM/claimed/raw/master/images/elyra_graphical_export.png")
+
 
 Each notebook is following a similar format.
 
