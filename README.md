@@ -31,6 +31,10 @@ limitations under the License.
    with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 
+![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
+*Low Code / No Code pipeline creation tool for data science*
+
+
 Components of this library can be exported as:
 1. KubeFlow pipeline components
 2. Apache Airflow components
