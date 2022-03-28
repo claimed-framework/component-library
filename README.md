@@ -30,10 +30,13 @@ limitations under the License.
    COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
    with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
-
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
 *Low Code / No Code pipeline creation tool for data science*
 
+ **Bring the latest and greatest libraries at the hands of everybody.**
+
+![AIX360/LIME highlights a poor deep learning covid classification model looking at bones only](https://github.com/IBM/claimed/raw/master/images/elyra_lime.png)
+*AIX360/LIME highlights a poor deep learning covid classification model looking at bones only*
 
 Components of this library can be exported as:
 1. KubeFlow pipeline components
