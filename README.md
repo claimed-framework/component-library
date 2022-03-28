@@ -16,9 +16,9 @@ limitations under the License.
 {% endcomment %}
 -->
 
-# CLAIMED - The Component Library for AI, Machine Learning, ETL, and Data Science
+# Elyra Component Library - The Component Library for AI, Machine Learning, ETL, and Data Science
 
-This repository contains the CLAIMED library [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+This repository contains the Elyra Component library [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 IMPORTANT: This library is currently targeted for research purposes only and usage for production is discouraged at this point.
 This library contains usable exemplars of components implemented as Jupyter notebooks. Those are tailored for the JuypterLab/Elyra pipeline editor but of course can be used in other contexts as well.
@@ -30,8 +30,8 @@ Components of this library can be exported as:
 3. Standalone graphical components for the Elyra pipeline editor
 4. Standalone components to be run from the command line
 
-![Visually create pipelines from notebooks and run everywhere!]("https://github.com/IBM/claimed/raw/master/images/elyra_graphical_export.png")
-
+![Visually create pipelines from notebooks and run everywhere](https://github.com/IBM/claimed/raw/master/images/elyra_graphical_export.png)
+*Visually create pipelines from notebooks and run everywhere*
 
 Each notebook is following a similar format.
 
@@ -40,6 +40,11 @@ Each notebook is following a similar format.
 3. The third cell imports all dependencies.
 4. The fourth cell contains a list of dependencies, input parameters, and return values as Python comments
 5. The fifth cell reads the input parameters from environment variables.
+
+
+![Export notebooks and files as runtime components for different engines](https://github.com/IBM/claimed/raw/master/images/elyra_cli_export.png)
+*Export notebooks and files as runtime components for different engines*
+
 
 To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
 
