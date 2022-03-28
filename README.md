@@ -18,10 +18,17 @@ limitations under the License.
 
 # Elyra Component Library - The Component Library for AI, Machine Learning, ETL, and Data Science
 
-This repository contains the Elyra Component library [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
-
-IMPORTANT: This library is currently targeted for research purposes only and usage for production is discouraged at this point.
-This library contains usable exemplars of components implemented as Jupyter notebooks. Those are tailored for the JuypterLab/Elyra pipeline editor but of course can be used in other contexts as well.
+   This is a component library for artificial intelligence, machine learning,
+   "extract, transform, load" processes and data science.
+   The goal is to enable low-code/no-code rapid prototyping by providing
+   ready-made components for various business domains,
+   supporting various computer languages, working on various data flow editors and
+   running on diverse execution engines.
+   To demonstrate its utility, we constructed a workflow composed exclusively of this library's components.
+  To demonstrate the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scans dataset
+   and created a deep learning model, which is supposed to classify exams as either
+   COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
+   with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 
 Components of this library can be exported as:
@@ -47,4 +54,6 @@ Each notebook is following a similar format.
 
 
 To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
+
+.. [covidata] Joseph Paul Cohen et al. *COVID-19 Image Data Collection: Prospective Predictions Are the Future*, arXiv:2006.11988, 2020
 
