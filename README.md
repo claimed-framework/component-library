@@ -31,7 +31,6 @@ Components of this library can be exported as:
 4. Standalone components to be run from the command line
 
 
-
 Each notebook is following a similar format.
 
 1. The first cell contains a description of the component itself.
@@ -40,11 +39,5 @@ Each notebook is following a similar format.
 4. The fourth cell contains a list of dependencies, input parameters, and return values as Python comments
 5. The fifth cell reads the input parameters from environment variables.
 
-To learn more on how this library works in practice, please have a look at the following video
+To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
 
-
-<a href="https://www.youtube.com/watch?v=FuV2oG55C5s" title="Music Caster Video Demo">
-  <p align="center">
-    <img width="75%" src="https://img.youtube.com/vi/FuV2oG55C5s/maxresdefault.jpg" />
-  </p>
-</a>
