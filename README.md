@@ -21,7 +21,16 @@ limitations under the License.
 This repository contains the CLAIMED library [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 IMPORTANT: This library is currently targeted for research purposes only and usage for production is discouraged at this point.
-This library contains usable exemplars of components implemented as Jupyter notebooks. Those are tailored for the ElyraAI pipeline editor but of course can be used in other contexts as well.
+This library contains usable exemplars of components implemented as Jupyter notebooks. Those are tailored for the JuypterLab/Elyra pipeline editor but of course can be used in other contexts as well.
+
+
+Components of this library can be exported as:
+1. KubeFlow pipeline components
+2. Apache Airflow components
+3. Standalone graphical components for the Elyra pipeline editor
+4. Standalone components to be run from the command line
+
+
 
 Each notebook is following a similar format.
 
@@ -31,4 +40,11 @@ Each notebook is following a similar format.
 4. The fourth cell contains a list of dependencies, input parameters, and return values as Python comments
 5. The fifth cell reads the input parameters from environment variables.
 
-Coming soon: A video and sample pipeline where you can see the component library in action. For now, please refer to the publication mentioned above for more information. This publication also contains a link to a sample repository with a working pipeline.
+To learn more on how this library works in practice, please have a look at the following video
+
+
+<a href="https://www.youtube.com/watch?v=FuV2oG55C5s" title="Music Caster Video Demo">
+  <p align="center">
+    <img width="75%" src="https://img.youtube.com/vi/FuV2oG55C5s/maxresdefault.jpg" />
+  </p>
+</a>
