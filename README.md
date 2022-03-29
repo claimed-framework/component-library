@@ -18,17 +18,25 @@ limitations under the License.
 
 # Elyra Component Library - The Component Library for AI, Machine Learning, ETL, and Data Science
 
-   This is a component library for artificial intelligence, machine learning,
-   "extract, transform, load" processes and data science.
-   The goal is to enable low-code/no-code rapid prototyping by providing
-   ready-made components for various business domains,
-   supporting various computer languages, working on various data flow editors and
-   running on diverse execution engines.
-   To demonstrate its utility, we constructed a workflow composed exclusively of this library's components.
-  To demonstrate the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scans dataset [covidata]
-   and created a deep learning model, which is supposed to classify exams as either
-   COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
-   with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+**TL;DR**
+- set of re-usable coarse-grained components (just a bunch of code)
+- think of tasks, not functions (e.g. read from database, transform data, train model, deploy model, ...)
+- write once, runs everywhere (export to Kubeflow, Apache Airflow, Apache Nifi, ...)
+- just use python, no other skills required (e.g. Kubeflow component yaml, maven, Java, ...)
+- automatic UI generation through Elyra Pipeline Editor
+
+
+This is a component library for artificial intelligence, machine learning,
+"extract, transform, load" processes and data science.
+The goal is to enable low-code/no-code rapid prototyping by providing
+ready-made components for various business domains,
+supporting various computer languages, working on various data flow editors and
+running on diverse execution engines.
+To demonstrate its utility, we constructed a workflow composed exclusively of this library's components.
+To demonstrate the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scans dataset [covidata]
+and created a deep learning model, which is supposed to classify exams as either
+COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
+with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
 *Low Code / No Code pipeline creation tool for data science*
