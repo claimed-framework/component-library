@@ -71,5 +71,9 @@ Each notebook is following a similar format.
 
 To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
 
+## Related work
+[ploomber](https://github.com/ploomber/ploomber)
+[orchest](https://www.orchest.io/)
+
 [covidata] Joseph Paul Cohen et al. *COVID-19 Image Data Collection: Prospective Predictions Are the Future*, arXiv:2006.11988, 2020
 
