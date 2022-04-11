@@ -19,7 +19,7 @@ limitations under the License.
 # Elyra Component Library - The Component Library for AI, Machine Learning, ETL, and Data Science
 
 **TL;DR**
-- set of re-usable coarse-grained components (just a bunch of code)
+- set of re-usable coarse-grained components (JUST A BUNCH OF CODE)
 - think of tasks, not functions (e.g. read from database, transform data, train model, deploy model, ...)
 - write once, runs everywhere (export to Kubeflow, Apache Airflow, Apache Nifi, ...)
 - just use python, no other skills required (no Kubeflow component yaml, maven, Java, ...)
