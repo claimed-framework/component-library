@@ -27,7 +27,7 @@ limitations under the License.
 - upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
 
-This is a component library for artificial intelligence, machine learning,
+This is a Component library for artificial intelligence, machine learning,
 "extract, transform, load" processes and data science.
 The goal is to enable low-code/no-code rapid prototyping by providing
 ready-made components for various business domains,
