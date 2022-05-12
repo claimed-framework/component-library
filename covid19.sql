@@ -1,4 +1,9 @@
 drop view if exists cube cascade;
+drop view if exists rki_covid_deaths_view
+
+create or replace view owidcovid_view as  SELECT to_date(owidcovid.date, '%YYYY-%MM-%DD'::text) AS "timestamp", extract(YEAR from to_date(owidcovid.date, '%YYYY-%MM-%DD'::text))::int as year,* FROM owidcovid;
+
+create or replace view rki_covid_deaths_view as SELECT replace(t."anzahl verstorbene covid-19 fã¤lle",'<','1')::int as value      , TO_DATE(CONCAT(sterbejahr, sterbewoche), 'IYYYIW') as timestamp FROM public.rki_covid_deaths t order by sterbejahr, sterbewoche asc;
 
 create or replace view destatis6_view as 
     SELECT destatis6.zeit as year,
@@ -10,7 +15,7 @@ create or replace view destatis6_view as
     group by year, month, time 
     order by time asc;
     
-   
+
 
 create or replace view destatis6_moments as 
     SELECT month, min(value) as minimum, avg(value)::int as average, max(value) as maximum from destatis6_view where year > 2000 and year < 2021 group by month ; 

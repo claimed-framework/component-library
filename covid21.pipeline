@@ -28,8 +28,8 @@
             "ui_data": {
               "label": "input-url.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 50,
-              "y_pos": 50,
+              "x_pos": 26,
+              "y_pos": 39,
               "description": "Run notebook file"
             }
           },
@@ -88,8 +88,8 @@
             "ui_data": {
               "label": "output-rdbms-sqlalchemy.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 290,
-              "y_pos": 50,
+              "x_pos": 265,
+              "y_pos": 25,
               "description": "Run notebook file"
             }
           },
@@ -109,138 +109,6 @@
                 {
                   "id": "9a94f450-cf7e-4048-b8a0-ec952bb7b8de",
                   "node_id_ref": "6de570f0-5446-48bb-96c4-6b3a1f7ee292",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "8e6fc787-6d42-4611-b5b7-aa632cf9ba0b",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=drop view if exists owidcovid_view"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 530,
-              "y_pos": 50,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "15a85386-e1fd-4cc8-8615-f4797943664e",
-                  "node_id_ref": "7df33f03-e024-48fb-ac88-935eb170e154",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "4e9212f4-3a32-4afc-91e0-9be913741022",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=create or replace view owidcovid_view as  SELECT to_date(owidcovid.date, '%YYYY-%MM-%DD'::text) AS \"timestamp\", extract(YEAR from to_date(owidcovid.date, '%YYYY-%MM-%DD'::text))::int as year,* FROM owidcovid"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 770,
-              "y_pos": 50,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "ab5dadd6-7aef-42b3-8942-6b4fd8f89fa5",
-                  "node_id_ref": "8e6fc787-6d42-4611-b5b7-aa632cf9ba0b",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -380,138 +248,6 @@
           ]
         },
         {
-          "id": "c4d79656-b525-4705-af1a-e083769f0859",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=drop view if exists rki_covid_deaths_view"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 530,
-              "y_pos": 280,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "ba77786c-6030-4041-b35a-f4fe136daad1",
-                  "node_id_ref": "60e61e81-f0ce-4d8c-bdb8-57d5e68c4b98",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "aaee40e4-6242-4876-b888-f25e74270cd2",
-          "type": "execution_node",
-          "op": "execute-notebook-node",
-          "app_data": {
-            "component_parameters": {
-              "filename": "component-library/transform/alchemy-sql-query.ipynb",
-              "runtime_image": "continuumio/anaconda3:2020.07",
-              "outputs": [],
-              "env_vars": [
-                "db_type=postgresql",
-                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
-                "database=ibmclouddb",
-                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
-                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
-                "port=30221",
-                "sql=create or replace view rki_covid_deaths_view as SELECT replace(t.\"anzahl verstorbene covid-19 fã¤lle\",'<','1')::int as value      , TO_DATE(CONCAT(sterbejahr, sterbewoche), 'IYYYIW') as timestamp FROM public.rki_covid_deaths t order by sterbejahr, sterbewoche asc"
-              ],
-              "dependencies": [],
-              "include_subdirectories": false
-            },
-            "label": "",
-            "ui_data": {
-              "label": "alchemy-sql-query.ipynb",
-              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 770,
-              "y_pos": 280,
-              "description": "Run notebook file"
-            }
-          },
-          "inputs": [
-            {
-              "id": "inPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Input Port"
-                }
-              },
-              "links": [
-                {
-                  "id": "c5069513-b6e2-4ba1-badd-cbb70def09e1",
-                  "node_id_ref": "c4d79656-b525-4705-af1a-e083769f0859",
-                  "port_id_ref": "outPort"
-                }
-              ]
-            }
-          ],
-          "outputs": [
-            {
-              "id": "outPort",
-              "app_data": {
-                "ui_data": {
-                  "cardinality": {
-                    "min": 0,
-                    "max": -1
-                  },
-                  "label": "Output Port"
-                }
-              }
-            }
-          ]
-        },
-        {
           "id": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
           "type": "execution_node",
           "op": "execute-notebook-node",
@@ -539,8 +275,8 @@
             "ui_data": {
               "label": "output-rdbms-sqlalchemy.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 49,
-              "y_pos": 152,
+              "x_pos": 29,
+              "y_pos": 155,
               "description": "Run notebook file"
             }
           },
@@ -598,8 +334,8 @@
             "ui_data": {
               "label": "alchemy-sql-query.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 289,
-              "y_pos": 152,
+              "x_pos": 530,
+              "y_pos": 165,
               "description": "Run notebook file"
             }
           },
@@ -619,6 +355,16 @@
                 {
                   "id": "6e440259-e150-42f3-a031-82a49dfc0153",
                   "node_id_ref": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "1ec1264d-f5e7-4266-84a6-a0df54b9c87a",
+                  "node_id_ref": "7df33f03-e024-48fb-ac88-935eb170e154",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "10cfdb3b-bfe4-43d1-afbd-faf039274fce",
+                  "node_id_ref": "60e61e81-f0ce-4d8c-bdb8-57d5e68c4b98",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -659,8 +405,8 @@
             },
             {
               "id": "8885fa30-420a-458e-bf97-37b076606099",
-              "x_pos": -16,
-              "y_pos": 93,
+              "x_pos": -19,
+              "y_pos": 98,
               "width": 175,
               "height": 42,
               "class_name": "d3-comment-rect",
