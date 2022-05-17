@@ -47,7 +47,7 @@ with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/21
 ![AIX360/LIME highlights a poor deep learning covid classification model looking at bones only](https://github.com/IBM/claimed/raw/master/images/elyra_lime.png)
 *AIX360/LIME highlights a poor deep learning covid classification model looking at bones only*
 
-Components of this library can be exported as:
+Components of this Library can be exported as:
 1. KubeFlow pipeline components
 2. Apache Airflow components
 3. Standalone graphical components for the Elyra pipeline editor
