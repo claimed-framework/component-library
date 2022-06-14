@@ -37,7 +37,8 @@ To demonstrate its utility, we constructed a workflow composed exclusively of th
 To demonstrate the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scans dataset [covidata]
 and created a deep learning model, which is supposed to classify exams as either
 COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
-with support for local, Airflow and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+with support for local, Airflow and Kubeflow execution ([CLAIMED, a visual and scalable component library for
+Trusted AI - SciPy2021](http://dx.doi.org/10.25080/majora-1b6fd038-007)).
 
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
 *Low Code / No Code pipeline creation tool for data science*
