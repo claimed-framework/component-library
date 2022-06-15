@@ -20,42 +20,33 @@ limitations under the License.
 
 **TL;DR**
 - set of re-usable coarse-grained components (just a bunch of code)
-- think of tasks, not functions (e.g. read from database, transform data, train model, deploy model, ...)
-- write once, runs everywhere (export to Kubeflow, Apache Airflow, Apache Nifi, ...)
-- just use python, no other skills required (no Kubeflow component yaml, maven, Java, ...)
-- 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science) 
+- think of tasks, not functions (e.g., read from a database, transform data, train model, deploy model)
+- write once, runs everywhere (export to Kubeflow, Apache Airflow, Apache Nifi)
+- just use python - no other skills required (no Kubeflow component YAML, maven, Java)
+- 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science)
 - upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
 
-This is a component library for artificial intelligence, machine learning,
-"extract, transform, load" processes and data science.
-The goal is to enable low-code/no-code rapid prototyping by providing
-ready-made components for various business domains,
-supporting various computer languages, working on various data flow editors and
-running on diverse execution engines.
-To demonstrate its utility, we constructed a workflow composed exclusively of this library's components.
-To demonstrate the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scans dataset [covidata]
-and created a deep learning model, which is supposed to classify exams as either
-COVID-19 positive or negative. The pipeline was built with Elyra's Pipeline Visual Editor,
-with support for local, Airflow and Kubeflow execution ([CLAIMED, a visual and scalable component library for
-Trusted AI - SciPy2021](http://dx.doi.org/10.25080/majora-1b6fd038-007)).
+
+CLAIMED is a component library for artificial intelligence, machine learning, "extract, transform, load" processes, and data science. The goal is to enable low-code/no-code rapid prototyping. The library provides ready-made components for various business domains, supports multiple computer languages, works on different data flow editors, and runs various execution engines. To demonstrate its utility, we constructed a workflow composed exclusively of this library's components. To display the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scan dataset [covidata]. We created a deep learning model, which is supposed to classify exams as either COVID-19 positive or negative. We built the pipeline with Elyra's Pipeline Visual Editor, with support for local, Airflow, and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+
 
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
 *Low Code / No Code pipeline creation tool for data science*
 
- **Bring the latest and greatest libraries at the hands of everybody.**
+ **Bring the latest and greatest libraries to the hands of everybody.**
 
 ![AIX360/LIME highlights a poor deep learning covid classification model looking at bones only](https://github.com/IBM/claimed/raw/master/images/elyra_lime.png)
 *AIX360/LIME highlights a poor deep learning covid classification model looking at bones only*
 
 Components of this library can be exported as:
-1. KubeFlow pipeline components
+1. Kubeflow pipeline components
 2. Apache Airflow components
 3. Standalone graphical components for the Elyra pipeline editor
 4. Standalone components to be run from the command line
 
 ![Visually create pipelines from notebooks and run everywhere](https://github.com/IBM/claimed/raw/master/images/elyra_graphical_export.png)
-*Visually create pipelines from notebooks and run everywhere*
+*Visually create pipelines from notebooks and run them everywhere*
 
 Each notebook is following a similar format.
 
@@ -73,8 +64,9 @@ Each notebook is following a similar format.
 To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
 
 ## Related work
-[ploomber](https://github.com/ploomber/ploomber)
-[orchest](https://www.orchest.io/)
+[Ploomber](https://github.com/ploomber/ploomber)
+
+[Orchest](https://www.orchest.io/)
 
 [covidata] Joseph Paul Cohen et al. *COVID-19 Image Data Collection: Prospective Predictions Are the Future*, arXiv:2006.11988, 2020
 
@@ -83,5 +75,5 @@ To learn more on how this library works in practice, please have a look at the f
 We welcome your questions, ideas, and feedback. Please create an [issue](https://github.com/IBM/claimed/issues) or a [discussion thread](https://github.com/IBM/claimed/discussions).
 
 ## Contributing to CLAIMED
-If you are interested in helping make the NLP editor  better, we encourage you to take a look at our 
+Interested in helping make the NLP editor better? We encourage you to take a look at our 
 [Contributing](CONTRIBUTING.md) page.
