@@ -27,7 +27,9 @@ limitations under the License.
 - upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
 
+
 CLAIMED is a component library for artificial intelligence, machine learning, "extract, transform, load" processes, and data science. The goal is to enable low-code/no-code rapid prototyping. The library provides ready-made components for various business domains, supports multiple computer languages, works on different data flow editors, and runs various execution engines. To demonstrate its utility, we constructed a workflow composed exclusively of this library's components. To display the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scan dataset [covidata]. We created a deep learning model, which is supposed to classify exams as either COVID-19 positive or negative. We built the pipeline with Elyra's Pipeline Visual Editor, with support for local, Airflow, and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+
 
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
 *Low Code / No Code pipeline creation tool for data science*
