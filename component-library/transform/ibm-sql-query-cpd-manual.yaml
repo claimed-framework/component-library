@@ -1,35 +1,47 @@
-name: ibm_sql_query_cpd
-description: Run arbitrary SQL based data transformation jobs on CSV and PARQUET data stored on Cloud Object Storage using IBM SQL Query. Transformation results are written stored back to Cloud Object Storage
+name: Data Engine (SQL)
+description: Run arbitrary SQL based data transformation jobs on CSV, PARQUET, JSON, AVRO and ORC data stored on Cloud Object Storage using IBM Data Engine. Transformation results are stored back to Cloud Object Storage
+
+metadata:
+  annotations:
+    platform: IBM Cloud Pak for Data
+    component_group: run
+    component_type: data-engine
+    component_version: '1'
+    component_type_name: IBM Data Engine
+    entitlements: data-engine
+    feature_flag: data-engine
 
 inputs:
-- name: sql_query_crn
+- name: data_engine_crn
   type:
     InstanceCRN:
       service_name: sql-query
   optional:
-  description: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
+  description: (unique) Custom Resource Name (CRN) of IBM Data Engine Service
   annotations:
-    human_name: (unique) Custom Resource Name (CRN) of IBM SQL Query Service
+    human_name: Data Engine CRN
 - name: sql
   type: String
   description: sql statement to execute
   annotations:
-    input_type: sql_textarea
+    input_type: textarea
+    human_name: SQL Query
 - name: target_dir_path
   type:
     CPDPath:
       path_type: file
       datasource_type: bluemixcloudobjectstorage
-  optional:
   description: COS URL where the results of the SQL job are to be stored
   annotations:
-    human_name: COS URL where the results of the SQL job are to be stored
-- {name: target_asset_name, type: String, description: 'Asset name to register for the results written by the SQL job'}
+    human_name: Result COS URL
+    allowed_scopes:
+    - space
+    - project
+- {name: target_asset_name, type: String, description: 'Asset name to register for the results written by the SQL job', annotations: {human_name: Target Asset Name}}
 - name: format
-  description: default: CSV - (will be generated into according STORED AS … clause in the INTO clause)
+  description: Output file format, default CSV - (will be generated into according STORED AS … clause in the INTO clause)
   annotations:
-    human_name: Format - default: CSV - (will be generated into according STORED AS … clause in the INTO clause)
-  default: appear
+    human_name: Output File Format
   type: String
   validators:
     enum:
@@ -43,11 +55,12 @@ inputs:
       human_name: ORC  
     - value: json
       human_name: JSON  
-- {name: partition_columns, type: String, description: 'optional, list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
-- {name: number_of_objects, type: Integer,  default: 0, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
-- {name: rows_per_object, type: Integer, default: 0, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
-- {name: exact_name, type: Bool, default: False, description: 'only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
-- {name: no_jobid_folder, type: Bool, default: False, description: 'will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
+- {name: partition_columns, type: String, description: 'list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)', optional: true, annotations: {human_name: Partition Columns}}
+- {name: number_of_objects, type: Integer,  default: 0, description: 'number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause', optional: true, annotations: {human_name: Number of Objects}}
+- {name: rows_per_object, type: Integer, default: 0, description: 'number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause', optional: true, annotations: {human_name: Rows per Object}}
+- {name: exact_name, type: Bool, default: False, description: 'only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.', annotations: {human_name: Exact Name}}
+- {name: no_jobid_folder, type: Bool, default: False, description: 'will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)', annotations: {human_name: No jobid Folder}}
+- {name: token, type: String, default: False, description: 'IBM cloud token to be injected)', annotations: {human_name: IBM Cloud Token}}
  
 outputs:
 - name: data_asset
@@ -62,18 +75,18 @@ outputs:
 
 implementation:
     container:
-        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.6
+        image: us.icr.io/ai-lifecycle-staging/ibm_sql_query_cpd:0.28
         command:
         - sh
         - -ec
         - |
-          ipython ./ibm-sql-query.ipynb data_asset="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" token="$4" sql_query_crn="$5" format="$6" partition_columns="$7" number_of_objects="$8" rows_per_object="$9" exact_name="$10" no_jobid_folder="$11" 
+          ipython ./ibm-sql-query-cpd.ipynb data_asset="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" token="$4" sql_query_crn="$5" format="$6" partition_columns="$7" number_of_objects="$8" rows_per_object="$9" exact_name="$10" no_jobid_folder="$11" 
         - {outputPath: data_asset}
         - {inputValue: target_dir_path}
         - {inputValue: target_asset_name}
         - {inputValue: sql}
         - {inputValue: token}
-        - {inputValue: sql_query_crn}
+        - {inputValue: data_engine_crn}
         - {inputValue: format}
         - {inputValue: partition_columns}
         - {inputValue: number_of_objects}
