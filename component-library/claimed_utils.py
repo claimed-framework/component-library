@@ -35,6 +35,3 @@ def parse_args_to_parameters():
           )
       )
   )
-
-  for parameter in parameters:
-      exec(parameter)
