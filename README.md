@@ -22,7 +22,7 @@ limitations under the License.
 - set of re-usable coarse-grained components (just a bunch of code)
 - think of tasks, not functions (e.g., read from a database, transform data, train model, deploy model)
 - write once, runs everywhere (export to Kubeflow, Apache Airflow, Apache Nifi)
-- just use python - no other skills required (no Kubeflow component YAML, maven, Java)
+- just use Python - no other skills required (no Kubeflow component YAML, maven, Java)
 - 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science)
 - upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
