@@ -1,0 +1,27 @@
+name: build-push-container-image
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.CR_USER }}
+        password: ${{ secrets.CR_PASSWORD }}
+ 
+    - name: Build the Docker image
+      run: |
+         cd ./component-library/anomaly/
+         ./anomaly-score-unsupervised/build.sh
+
