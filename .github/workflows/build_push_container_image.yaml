@@ -5,6 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    
+env:
+  version: 0.1
 
 jobs:
 
@@ -24,4 +27,6 @@ jobs:
       run: |
          cd ./component-library/anomaly/
          ./anomaly-score-unsupervised/build.sh
+
+ 
 
