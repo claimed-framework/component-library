@@ -47,6 +47,11 @@ Components of this library can be exported as:
 2. Apache Airflow components
 3. Standalone graphical components for the Elyra pipeline editor
 4. Standalone components to be run from the command line
+5. Standalone components to be run as docker containers
+6. Standalone components to be run as Kubernetes Service
+7. Standalone components to be run as KNative Application or Job
+8. Components to consume from or publish to Queue Managers like Kafka or MQTT
+9. Components deployed to Kubernets wrapped into DAPR (as service or message consumer/producer)
 
 ![Visually create pipelines from notebooks and run everywhere](https://github.com/IBM/claimed/raw/master/images/elyra_graphical_export.png)
 *Visually create pipelines from notebooks and run them everywhere*
