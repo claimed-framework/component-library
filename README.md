@@ -85,3 +85,5 @@ We welcome your questions, ideas, and feedback. Please create an [issue](https:/
 ## Contributing to CLAIMED
 Interested in helping make the NLP editor better? We encourage you to take a look at our 
 [Contributing](CONTRIBUTING.md) page.
+
+new line :D
