@@ -5,6 +5,6 @@ metadata:
 spec:
   topic: anomaly-data
   route: /send_data
-  pubsubname: anomaly-data-sub
+  pubsubname: pubsub
 scopes:
 - anomalydetection
