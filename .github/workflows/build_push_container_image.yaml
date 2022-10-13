@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     
 env:
-  version: 0.7
+  version: 0.8
   repository: romeokienzler
   create_image: True
 
@@ -27,12 +27,8 @@ jobs:
  
     - name: Build the Docker image
       run: |
-         pip install ipython nbformat nbconvert
-         pwd
          cd ./component-library/transform/
-         jupyter nbconvert --to script spark-sql-interactive.ipynb
-         chmod 755 ./spark-sql-interactive.py 
-         ./spark-sql-interactive.py
+         ./spark-sql-interactive/build.sh
          cd ..
          cd ..
          cd ./component-library/anomaly/
