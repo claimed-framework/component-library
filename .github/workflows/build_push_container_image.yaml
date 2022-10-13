@@ -28,11 +28,13 @@ jobs:
     - name: Build the Docker image
       run: |
          pip install ipython nbformat
-         cd ./component-library/anomaly/
-         ./anomaly-score-unsupervised/build.sh
          cd ./component-library/transform
          jupyter nbconvert --to script spark-sql-interactive.ipynb
          ./spark-sql-interactive.py
+         cd ..
+         cd ..
+         cd ./component-library/anomaly/
+         ./anomaly-score-unsupervised/build.sh
          
 
          
