@@ -27,7 +27,7 @@ jobs:
  
     - name: Build the Docker image
       run: |
-         pip install ipython nbformat
+         pip install ipython nbformat nbconvert
          pwd
          cd ./component-library/transform/
          jupyter nbconvert --to script spark-sql-interactive.ipynb
