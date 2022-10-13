@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/python-39
 USER root
-RUN dnf -y install java-1.8.0-openjdk
+RUN dnf -y install java-1.8.0-openjdk maven
 USER default
 RUN wget https://dlcdn.apache.org/spark/spark-3.2.2/spark-3.2.2-bin-hadoop3.2.tgz
 RUN tar xvfz spark-3.2.2-bin-hadoop3.2.tgz
