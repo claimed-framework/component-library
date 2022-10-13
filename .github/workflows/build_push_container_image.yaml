@@ -31,6 +31,7 @@ jobs:
          pwd
          cd ./component-library/transform/
          jupyter nbconvert --to script spark-sql-interactive.ipynb
+         chmod 755 ./spark-sql-interactive.py 
          ./spark-sql-interactive.py
          cd ..
          cd ..
