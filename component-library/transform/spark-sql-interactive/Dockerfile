@@ -9,6 +9,8 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 RUN git clone https://github.com/CODAIT/stocator.git
 RUN cd /opt/app-root/src/stocator && git checkout v1.1.5
 RUN cd /opt/app-root/src/stocator && mvn clean package -Pall-in-one
+RUN cd /opt/app-root/src/stocator && mvn dependency:tree
+#ADD spark-sql-interactive/stocator-1.1.5-jar-with-dependencies.jar .
 RUN pip install pyspark==3.3.0 ipython nbformat jupyter nbconvert
 ADD spark-sql-interactive.ipynb .
 RUN jupyter nbconvert --to script spark-sql-interactive.ipynb  
