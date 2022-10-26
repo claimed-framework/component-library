@@ -1,0 +1,219 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "b92798c8-71ca-4190-b356-b23995800520",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "../component-library/transform/spark-json-to-parquet.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "output_data_parquet=2015-01-01-15.parquet",
+                "data_json=2015-01-01-15.json.gz"
+              ],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "continuumio/anaconda3:2021.11"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "spark-json-to-parquet.ipynb",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 402,
+              "y_pos": 363,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "aa5c1c0d-334d-4b24-b46b-26505ae7a793",
+                  "node_id_ref": "019be2ae-ccae-411a-86bc-7c89bf0ee1cb",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a17f090e-d010-4cd6-9b20-034c6dd2d502",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "../component-library/output/upload-to-cos.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "access_key_id=13d9bd58599f4fafa42aebf3b807ca48",
+                "secret_access_key=e147362e46a3e364b8be7e9017dc303c8ed816b76654e1b2",
+                "endpoint=https://s3.eu-de.cloud-object-storage.appdomain.cloud",
+                "bucket_name=gharchive2",
+                "source_file=2015-01-01-15.parquet",
+                "destination_file=2015-01-01-15.parquet"
+              ],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "continuumio/anaconda3:2021.11"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "upload-to-cos.ipynb",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 573,
+              "y_pos": 246,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "29d11bd0-050d-4b3a-835e-5205942704d7",
+                  "node_id_ref": "b92798c8-71ca-4190-b356-b23995800520",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "019be2ae-ccae-411a-86bc-7c89bf0ee1cb",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "../component-library/input/input-url.ipynb",
+              "runtime_image": "continuumio/anaconda3:2021.11",
+              "outputs": [],
+              "env_vars": [
+                "url=https://data.gharchive.org/2015-01-01-15.json.gz",
+                "data_dir=../../data/",
+                "output_data=2015-01-01-15.json.gz"
+              ],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": []
+            },
+            "label": "",
+            "ui_data": {
+              "label": "input-url.ipynb",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 181,
+              "y_pos": 260,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 7,
+        "properties": {
+          "name": "gharchive",
+          "runtime": "Generic"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
