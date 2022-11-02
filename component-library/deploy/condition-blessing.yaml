@@ -1,4 +1,4 @@
-name: Model Blessing
+name: model-blessing
 description: Assesses metrics of an asset (ML model, dashboard, report, ...) and decides on readyness for production deployment. 
 
 
@@ -12,13 +12,11 @@ outputs:
 
 implementation:
     container:
-        image: continuumio/anaconda3:2020.07
+        image: romeokienzler/claimed-model-blessing
         command:
         - sh
         - -ec
         - |
-          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
-          wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/input/input-postgresql.ipynb
-          ipython ./input-postgresql.ipynb output_data_csv="$0" host="$1" database="$2" user="$3" password="$4" port="$5" sql="$6" data_dir="$7"
+          python ./condition-blessing.py output_result_filename="$0" expression="$1" 
         - {outputPath: output_result_filename}
         - {inputValue: expression}
