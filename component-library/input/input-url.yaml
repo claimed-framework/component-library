@@ -12,7 +12,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-input-url:0.1
+        image: romeokienzler/claimed-input-url:0.1b
         command:
         - sh
         - -ec
