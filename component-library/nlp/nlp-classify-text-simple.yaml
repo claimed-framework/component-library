@@ -11,7 +11,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-nlp-transform-snippets
+        image: romeokienzler/claimed-nlp-transform-snippets:0.1
         command:
         - sh
         - -ec

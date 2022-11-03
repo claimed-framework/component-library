@@ -14,7 +14,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-spark-ts-trends
+        image: romeokienzler/claimed-spark-ts-trends:0.1
         command:
         - sh
         - -ec

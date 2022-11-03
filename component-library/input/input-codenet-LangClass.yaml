@@ -12,7 +12,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-Pulls Codenet classification data from the ml-exchange.org
+        image: romeokienzler/claimed-Pulls Codenet classification data from the ml-exchange.org:0.1
         command:
         - sh
         - -ec

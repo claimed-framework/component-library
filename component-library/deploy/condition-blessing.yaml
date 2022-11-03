@@ -12,7 +12,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-model-blessing
+        image: romeokienzler/claimed-model-blessing:0.1
         command:
         - sh
         - -ec

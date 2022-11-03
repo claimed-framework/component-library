@@ -13,7 +13,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-spark-csv-to-parquet
+        image: romeokienzler/claimed-spark-csv-to-parquet:0.1
         command:
         - sh
         - -ec

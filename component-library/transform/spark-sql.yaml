@@ -14,7 +14,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-SparkSQL
+        image: romeokienzler/claimed-SparkSQL:0.1
         command:
         - sh
         - -ec
