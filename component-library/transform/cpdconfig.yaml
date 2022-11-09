@@ -1,0 +1,5 @@
+services:
+- name: watson-studio
+  type: watson-studio
+  service:
+    url: "https://api.dataplatform.dev.cloud.ibm.com"

@@ -1,0 +1,22 @@
+name: Pulls Codenet classification data from the ml-exchange.org
+description: Pulls Codenet classification data.zip from the ml-exchange.org in a form ready for text classification in the folowing format:
+
+
+inputs:
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_filename, type: String, description: 'file name for training data zip'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-Pulls Codenet classification data from the ml-exchange.org:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./input-codenet-LangClass.py output_filename="$0" data_dir="$1" 
+        - {outputPath: output_filename}
+        - {inputValue: data_dir}

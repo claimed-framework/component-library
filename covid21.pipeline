@@ -1,0 +1,442 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "6de570f0-5446-48bb-96c4-6b3a1f7ee292",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/input/input-url.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "url=https://covid.ourworldindata.org/data/owid-covid-data.csv",
+                "data_dir=../../data/"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "input-url.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 26,
+              "y_pos": 39,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "7df33f03-e024-48fb-ac88-935eb170e154",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "table=owidcovid",
+                "data_dir=../../data/"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "output-rdbms-sqlalchemy.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 265,
+              "y_pos": 25,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "9a94f450-cf7e-4048-b8a0-ec952bb7b8de",
+                  "node_id_ref": "6de570f0-5446-48bb-96c4-6b3a1f7ee292",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "25ad6463-e1c1-4333-8aa2-32f5e698bca0",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/input/input-rki-covid19-deaths.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "input-rki-covid19-deaths.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 50,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "60e61e81-f0ce-4d8c-bdb8-57d5e68c4b98",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "table=rki_covid_deaths",
+                "data_dir=../../data/"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "output-rdbms-sqlalchemy.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 290,
+              "y_pos": 280,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5dd7b0f2-0c6a-4535-a550-7d883aaa0730",
+                  "node_id_ref": "25ad6463-e1c1-4333-8aa2-32f5e698bca0",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/output/output-rdbms-sqlalchemy.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "table=destatis6",
+                "data_dir=../../data/",
+                "data_csv=12613-0006_flat.csv",
+                "delimiter=;"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "output-rdbms-sqlalchemy.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 29,
+              "y_pos": 155,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "b16810e2-4bab-45ef-83a2-15119fc51b0e",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "component-library/transform/alchemy-sql-query.ipynb",
+              "runtime_image": "continuumio/anaconda3:2020.07",
+              "outputs": [],
+              "env_vars": [
+                "db_type=postgresql",
+                "host=179cda0d-0681-4878-a203-91e54bc17c8d.c673ik6f0bicmuuesen0.databases.appdomain.cloud",
+                "database=ibmclouddb",
+                "user=ibm_cloud_67bb3013_ce00_4467_811e_343e8a972e01",
+                "password=a9efe44e17758becce785133f8d01758c5e77d28efb95c994916aecaf85cf73a",
+                "port=30221",
+                "sql_file=../../covid19.sql"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false
+            },
+            "label": "",
+            "ui_data": {
+              "label": "alchemy-sql-query.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 530,
+              "y_pos": 165,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6e440259-e150-42f3-a031-82a49dfc0153",
+                  "node_id_ref": "ba125cbb-7ca9-4fff-8a51-e27de5a17cab",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "1ec1264d-f5e7-4266-84a6-a0df54b9c87a",
+                  "node_id_ref": "7df33f03-e024-48fb-ac88-935eb170e154",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "10cfdb3b-bfe4-43d1-afbd-faf039274fce",
+                  "node_id_ref": "60e61e81-f0ce-4d8c-bdb8-57d5e68c4b98",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": [
+            {
+              "id": "650c34e8-9598-46a6-bc4b-478962995476",
+              "x_pos": -29,
+              "y_pos": -15,
+              "width": 175,
+              "height": 42,
+              "class_name": "d3-comment-rect",
+              "content": "OWID COVID",
+              "associated_id_refs": [
+                {
+                  "node_ref": "6de570f0-5446-48bb-96c4-6b3a1f7ee292"
+                }
+              ]
+            },
+            {
+              "id": "8885fa30-420a-458e-bf97-37b076606099",
+              "x_pos": -19,
+              "y_pos": 98,
+              "width": 175,
+              "height": 42,
+              "class_name": "d3-comment-rect",
+              "content": "DESTATIS",
+              "associated_id_refs": []
+            },
+            {
+              "id": "be026166-c29f-48c1-8f5a-662fb63832e2",
+              "x_pos": 3.5,
+              "y_pos": 217,
+              "width": 175,
+              "height": 42,
+              "class_name": "d3-comment-rect",
+              "content": "RKI Covid Deaths",
+              "associated_id_refs": [
+                {
+                  "node_ref": "25ad6463-e1c1-4333-8aa2-32f5e698bca0"
+                }
+              ]
+            }
+          ]
+        },
+        "version": 5,
+        "properties": {
+          "name": "covid21",
+          "runtime": "Generic"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}

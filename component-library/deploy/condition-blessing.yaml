@@ -1,0 +1,22 @@
+name: model-blessing
+description: Assesses metrics of an asset (ML model, dashboard, report, ...) and decides on readyness for production deployment. 
+
+
+inputs:
+- {name: expression, type: String, description: 'expression in python to be evaluated'}
+
+
+outputs:
+- {name: output_result_filename, type: String, description: 'output_result_filename (default: result.txt)'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-model-blessing:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./condition-blessing.py output_result_filename="$0" expression="$1" 
+        - {outputPath: output_result_filename}
+        - {inputValue: expression}

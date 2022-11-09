@@ -1,0 +1,26 @@
+name: spark-ts-trends
+description: Computes trends of time series by fitting a low order polinomial
+
+
+inputs:
+- {name: data_parquet, type: String, description: 'data_parquet path and parquet file name (default: data.parquet)'}
+- {name: master, type: String, description: '@param master url of master (default: local mode)'}
+- {name: data_dir, type: String, description: 'data_dir temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_result_filename, type: String, description: 'output_result_filename parquet file name of result (default: trends.parquet)'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-spark-ts-trends:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./spark-ts-trends.py output_result_filename="$0" data_parquet="$1" master="$2" data_dir="$3" 
+        - {outputPath: output_result_filename}
+        - {inputValue: data_parquet}
+        - {inputValue: master}
+        - {inputValue: data_dir}

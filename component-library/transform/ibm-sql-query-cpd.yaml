@@ -1,0 +1,41 @@
+name: ibm_sql_query_cpd
+description: Run arbitrary SQL based data transformation jobs on CSV and PARQUET data stored on Cloud Object Storage using IBM SQL Query. Transformation results are written stored back to Cloud Object Storage
+
+inputs:
+- {name: target_dir_path, type: String, description: 'COS URL where the results of the SQL job are to be stored'}
+- {name: target_asset_name, type: String, description: 'Asset name to register for the results written by the SQL job'}
+- {name: sql, type: String, description: 'sql statement to execute ()'}
+- {name: sql_query_crn, type: String, description: '(unique) Custom Resource Name (CRN) of IBM SQL Query Service'}
+- {name: format, type: String, description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
+- {name: partition_columns, type: String, description: 'optional, list of columns to use for partitioning the results of the SQL job, will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
+- {name: number_of_objects, type: String, description: 'optional, number of objects to store the results of the SQL job in, will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
+- {name: rows_per_object, type: String, description: 'optional, number of rows to be stored in each result object of the SQL job, will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
+- {name: exact_name, type: String, description: 'default: False, only valid when none of the above partitioning option is specified, produces exactly one object with name specified in target_dir_path, twill be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
+- {name: no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
+
+
+outputs:
+- {name: output_file_name, type: String, description: 'default: output.txt - output file name containing the CPD path of the resulting asset'}
+
+
+implementation:
+    container:
+        image: continuumio/anaconda3:2020.07
+        command:
+        - sh
+        - -ec
+        - |
+          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
+          wget x
+          ipython y output_file_name="$0" target_dir_path="$1" target_asset_name="$2" sql="$3" sql_query_crn="$4" format="$5" partition_columns="$6" number_of_objects="$7" rows_per_object="$8" exact_name="$9" no_jobid_folder="$10" 
+        - {outputPath: output_file_name}
+        - {inputValue: target_dir_path}
+        - {inputValue: target_asset_name}
+        - {inputValue: sql}
+        - {inputValue: sql_query_crn}
+        - {inputValue: format}
+        - {inputValue: partition_columns}
+        - {inputValue: number_of_objects}
+        - {inputValue: rows_per_object}
+        - {inputValue: exact_name}
+        - {inputValue: no_jobid_folder}

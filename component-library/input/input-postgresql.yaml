@@ -1,0 +1,34 @@
+name: Input Postgresql
+description: This component pulls data from a postgresql database as CSV on a given SQL statement. Parameters like
+
+
+inputs:
+- {name: host, type: String, description: 'hostname of database server'}
+- {name: database, type: String, description: 'database name'}
+- {name: user, type: String, description: 'db user'}
+- {name: password, type: String, description: 'db password'}
+- {name: port, type: Integer, description: 'db port'}
+- {name: sql, type: String, description: 'sql query statement to be executed'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_data_csv, type: String, description: 'path and file name for output'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-Input Postgresql:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./input-postgresql.py output_data_csv="$0" host="$1" database="$2" user="$3" password="$4" port="$5" sql="$6" data_dir="$7" 
+        - {outputPath: output_data_csv}
+        - {inputValue: host}
+        - {inputValue: database}
+        - {inputValue: user}
+        - {inputValue: password}
+        - {inputValue: port}
+        - {inputValue: sql}
+        - {inputValue: data_dir}

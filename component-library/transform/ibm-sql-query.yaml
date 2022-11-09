@@ -1,0 +1,41 @@
+name: ibm_sql_query
+description: Execute arbitrary SQL queries against CSV and PARQUET files using IBM Cloud SQL Query and Cloud Object Store
+
+inputs:
+- {name: api_key, type: String, description: 'IBM Cloud API key (alternative to token)'}
+- {name: token, type: String, description: 'IBM Cloud Token (alternative to API key)'}
+- {name: sql_query_crn, type: String, description: '(unique) Custom Resource Name (CRN) of IBM SQL Query Service'}
+- {name: out_format, type: String, description: 'default: CSV - (will be generated into according STORED AS … clause in the INTO clause)'}
+- {name: out_partition_columns, type: String, description: 'if set - will be generated into according PARTITIONED BY (<columns>) clause in the INTO clause)'}
+- {name: out_number_of_objects, type: String, description: 'will be generated into according PARTITIONED INTO <num> OBJECTS clause in INTO clause'}
+- {name: out_rows_per_object, type: String, description: 'will be generated into according PARTITIONED EVERY <num> ROWS clause in INTO clause'}
+- {name: out_exact_name, type: String, description: 'default: False - only valid when no partitioning option is specified. Will be generated into sqlClient.rename_exact_result(jobid) after SQL has run.'}
+- {name: out_no_jobid_folder, type: String, description: 'default: False - will be generated into JOBPREFIX NONE in the INTO clause. Will cause results of previous runs with same output_uri to be overwritten, because no unique sub folder will be created for the result)'}
+- {name: sql, type: String, description: 'sql statement to execute ()'}
+
+
+outputs:
+- {name: output_uri, type: String, description: 'URI of resulting file (example: cos://s3.eu-de.cloud-object-storage.appdomain.cloud/cos-rkie-sqlquery-test/result)'}
+
+
+implementation:
+    container:
+        image: continuumio/anaconda3:2020.07
+        command:
+        - sh
+        - -ec
+        - |
+          mkdir -p `echo $0 |sed -e 's/\/[a-zA-Z0-9]*$//'`
+          wget https://raw.githubusercontent.com/IBM/claimed/master/component-library/transform/ibm-sql-query.ipynb
+          ipython ibm-sql-query.ipynb output_uri="$0" api_key="$1" token="$2" sql_query_crn="$3" out_format="$4" out_partition_columns="$5" out_number_of_objects="$6" out_rows_per_object="$7" out_exact_name="$8" out_no_jobid_folder="$9" sql="$10" 
+        - {outputPath: output_uri}
+        - {inputValue: api_key}
+        - {inputValue: token}
+        - {inputValue: sql_query_crn}
+        - {inputValue: out_format}
+        - {inputValue: out_partition_columns}
+        - {inputValue: out_number_of_objects}
+        - {inputValue: out_rows_per_object}
+        - {inputValue: out_exact_name}
+        - {inputValue: out_no_jobid_folder}
+        - {inputValue: sql}

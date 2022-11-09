@@ -1,0 +1,23 @@
+name: input-url
+description: This component reads a file from a HTTP(s) source via wget
+
+inputs:
+- {name: url, type: String, description: 'url of souce'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_data, type: String, description: 'path and file name for output'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-input-url:0.1b
+        command:
+        - sh
+        - -ec
+        - |
+          python ./input-url.py output_data="$0" url="$1" data_dir="$2" 
+        - {outputPath: output_data}
+        - {inputValue: url}
+        - {inputValue: data_dir}

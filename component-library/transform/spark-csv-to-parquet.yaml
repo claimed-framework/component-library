@@ -1,0 +1,25 @@
+name: spark-csv-to-parquet
+description: Converts a CSV file with header to parquet using ApacheSpark
+
+inputs:
+- {name: data_csv, type: String, description: 'source path and file name (default: data.csv)'}
+- {name: master, type: String, description: 'url of master (default: local mode)'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_data_parquet, type: String, description: 'destination path and parquet file name (default: data.parquet)'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-spark-csv-to-parquet:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./spark-csv-to-parquet.py output_data_parquet="$0" data_csv="$1" master="$2" data_dir="$3" 
+        - {outputPath: output_data_parquet}
+        - {inputValue: data_csv}
+        - {inputValue: master}
+        - {inputValue: data_dir}

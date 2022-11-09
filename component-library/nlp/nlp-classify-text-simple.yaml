@@ -1,0 +1,21 @@
+name: nlp-transform-snippets
+description: creates snippets out of large text files
+
+inputs:
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_model_zip, type: String, description: 'resulting model zip file name'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-nlp-transform-snippets:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./nlp-classify-text-simple.py output_model_zip="$0" data_dir="$1" 
+        - {outputPath: output_model_zip}
+        - {inputValue: data_dir}
