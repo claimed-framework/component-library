@@ -24,6 +24,7 @@
               },
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": []
             },
@@ -73,8 +74,8 @@
           "app_data": {
             "component_parameters": {
               "data_json": {
-                "widget": "inputpath",
-                "value": ""
+                "widget": "file",
+                "value": "../2015-01-01-15.json.gz"
               },
               "master": {
                 "widget": "string",
@@ -97,17 +98,7 @@
               "image": "/static/elyra/kubeflow.svg",
               "x_pos": 364,
               "y_pos": 203.5,
-              "description": "Converts a JSON file to parquet using ApacheSpark CLAIMED v0.2h",
-              "decorations": [
-                {
-                  "id": "error",
-                  "image": "data:image/svg+xml;utf8,%3Csvg%20focusable%3D%22false%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%23da1e28%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20aria-hidden%3D%22true%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%228%22%20r%3D%228%22%20fill%3D%22%23ffffff%22%3E%3C%2Fcircle%3E%3Cpath%20d%3D%22M8%2C1C4.2%2C1%2C1%2C4.2%2C1%2C8s3.2%2C7%2C7%2C7s7-3.1%2C7-7S11.9%2C1%2C8%2C1z%20M7.5%2C4h1v5h-1C7.5%2C9%2C7.5%2C4%2C7.5%2C4z%20M8%2C12.2%09c-0.4%2C0-0.8-0.4-0.8-0.8s0.3-0.8%2C0.8-0.8c0.4%2C0%2C0.8%2C0.4%2C0.8%2C0.8S8.4%2C12.2%2C8%2C12.2z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M7.5%2C4h1v5h-1C7.5%2C9%2C7.5%2C4%2C7.5%2C4z%20M8%2C12.2c-0.4%2C0-0.8-0.4-0.8-0.8s0.3-0.8%2C0.8-0.8%09c0.4%2C0%2C0.8%2C0.4%2C0.8%2C0.8S8.4%2C12.2%2C8%2C12.2z%22%20data-icon-path%3D%22inner-path%22%20opacity%3D%220%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E",
-                  "outline": false,
-                  "position": "topRight",
-                  "x_pos": -24,
-                  "y_pos": -8
-                }
-              ]
+              "description": "Converts a JSON file to parquet using ApacheSpark CLAIMED v0.2m"
             }
           },
           "inputs": [
@@ -126,6 +117,92 @@
                 {
                   "id": "8e9663e2-fc69-47d6-9e12-52fb03851ace",
                   "node_id_ref": "584726be-0cce-4fe4-9e3f-3c8fcbbccb7f",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "e5e606f6-fc8d-4184-bd43-659fc17d9bde",
+          "type": "execution_node",
+          "op": "local-directory-catalog:e2691ba83bf0",
+          "app_data": {
+            "component_parameters": {
+              "access_key_id": {
+                "widget": "string",
+                "value": "-"
+              },
+              "secret_access_key": {
+                "widget": "string",
+                "value": "-"
+              },
+              "endpoint": {
+                "widget": "string",
+                "value": "-"
+              },
+              "bucket_name": {
+                "widget": "string",
+                "value": "-"
+              },
+              "source_file": {
+                "widget": "file",
+                "value": "../hmp.parquet"
+              },
+              "destination_file": {
+                "widget": "string",
+                "value": "-"
+              },
+              "data_dir": {
+                "widget": "string",
+                "value": "-"
+              },
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": []
+            },
+            "component_source": "{\"catalog_type\": \"local-directory-catalog\", \"component_ref\": {\"base_dir\": \"/home/romeokienzler/gitco/claimed/component-library\", \"path\": \"output/upload-to-cos.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "output-upload-to-cos",
+              "image": "/static/elyra/kubeflow.svg",
+              "x_pos": 314,
+              "y_pos": 352.5,
+              "description": "Uploads a file to any S3 compliant Cloud Object Storage CLAIMED v0.2n"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5ccca5c6-8729-4de5-9079-826ebedf79db",
+                  "node_id_ref": "f01004e1-4cda-4319-be99-400f20056b0f",
                   "port_id_ref": "outPort"
                 }
               ]

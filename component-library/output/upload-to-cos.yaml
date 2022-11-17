@@ -1,0 +1,33 @@
+name: output-upload-to-cos
+description: Uploads a file to any S3 compliant Cloud Object Storage CLAIMED v0.2n
+
+inputs:
+- {name: access_key_id, type: String, description: 'access key id'}
+- {name: secret_access_key, type: String, description: 'secret access key'}
+- {name: endpoint, type: String, description: 'cos/s3 endpoint'}
+- {name: bucket_name, type: String, description: 'cos bucket name'}
+- {name: source_file, type: String, description: 'source file to be uploaded'}
+- {name: destination_file, type: String, description: 'destination file name'}
+- {name: data_dir, type: String, description: 'temporary data folder'}
+
+
+outputs:
+- {name: output_dummy, type: String, description: 'dummy_output (to be fixed once C3 supports < 1 outputs)'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-output-upload-to-cos:0.2n
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./upload-to-cos.ipynb output_dummy="$0" access_key_id="$1" secret_access_key="$2" endpoint="$3" bucket_name="$4" source_file="$5" destination_file="$6" data_dir="$7" 
+        - {outputPath: output_dummy}
+        - {inputValue: access_key_id}
+        - {inputValue: secret_access_key}
+        - {inputValue: endpoint}
+        - {inputValue: bucket_name}
+        - {inputValue: source_file}
+        - {inputValue: destination_file}
+        - {inputValue: data_dir}

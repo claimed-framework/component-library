@@ -1,5 +1,5 @@
 name: spark-json-to-parquet
-description: Converts a JSON file to parquet using ApacheSpark CLAIMED v0.2h
+description: Converts a JSON file to parquet using ApacheSpark CLAIMED v0.2m
 
 inputs:
 - {name: data_json, type: String, description: 'source path and file name (default: data.csv)'}
@@ -13,7 +13,7 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-spark-json-to-parquet:0.2h
+        image: romeokienzler/claimed-spark-json-to-parquet:0.2m
         command:
         - sh
         - -ec
