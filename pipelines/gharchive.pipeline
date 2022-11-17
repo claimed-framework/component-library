@@ -17,8 +17,14 @@
               "filename": "../component-library/transform/spark-json-to-parquet.ipynb",
               "outputs": [],
               "env_vars": [
-                "output_data_parquet=2015-01-01-15.parquet",
-                "data_json=2015-01-01-15.json.gz"
+                {
+                  "env_var": "output_data_parquet",
+                  "value": "2015-01-01-15.parquet"
+                },
+                {
+                  "env_var": "data_json",
+                  "value": "2015-01-01-15.json.gz"
+                }
               ],
               "kubernetes_secrets": [],
               "kubernetes_tolerations": [],
@@ -33,7 +39,7 @@
               "label": "spark-json-to-parquet.ipynb",
               "image": "/static/elyra/notebook.svg",
               "x_pos": 402,
-              "y_pos": 363,
+              "y_pos": 362,
               "description": "Run notebook file"
             }
           },
@@ -82,12 +88,30 @@
               "filename": "../component-library/output/upload-to-cos.ipynb",
               "outputs": [],
               "env_vars": [
-                "access_key_id=13d9bd58599f4fafa42aebf3b807ca48",
-                "secret_access_key=e147362e46a3e364b8be7e9017dc303c8ed816b76654e1b2",
-                "endpoint=https://s3.eu-de.cloud-object-storage.appdomain.cloud",
-                "bucket_name=gharchive2",
-                "source_file=2015-01-01-15.parquet",
-                "destination_file=2015-01-01-15.parquet"
+                {
+                  "env_var": "access_key_id",
+                  "value": "13d9bd58599f4fafa42aebf3b807ca48"
+                },
+                {
+                  "env_var": "secret_access_key",
+                  "value": "e147362e46a3e364b8be7e9017dc303c8ed816b76654e1b2"
+                },
+                {
+                  "env_var": "endpoint",
+                  "value": "https://s3.eu-de.cloud-object-storage.appdomain.cloud"
+                },
+                {
+                  "env_var": "bucket_name",
+                  "value": "gharchive2"
+                },
+                {
+                  "env_var": "source_file",
+                  "value": "2015-01-01-15.parquet"
+                },
+                {
+                  "env_var": "destination_file",
+                  "value": "2015-01-01-15.parquet"
+                }
               ],
               "kubernetes_secrets": [],
               "kubernetes_tolerations": [],
@@ -152,9 +176,18 @@
               "runtime_image": "continuumio/anaconda3:2021.11",
               "outputs": [],
               "env_vars": [
-                "url=https://data.gharchive.org/2015-01-01-15.json.gz",
-                "data_dir=../../data/",
-                "output_data=2015-01-01-15.json.gz"
+                {
+                  "env_var": "url",
+                  "value": "https://data.gharchive.org/2015-01-01-15.json.gz"
+                },
+                {
+                  "env_var": "data_dir",
+                  "value": "../../data/"
+                },
+                {
+                  "env_var": "output_data",
+                  "value": "2015-01-01-15.json.gz"
+                }
               ],
               "kubernetes_secrets": [],
               "kubernetes_tolerations": [],
@@ -206,7 +239,7 @@
         "ui_data": {
           "comments": []
         },
-        "version": 7,
+        "version": 8,
         "properties": {
           "name": "gharchive",
           "runtime": "Generic"

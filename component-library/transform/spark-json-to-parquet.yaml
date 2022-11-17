@@ -1,0 +1,25 @@
+name: spark-json-to-parquet
+description: Converts a JSON file to parquet using ApacheSpark CLAIMED v0.2h
+
+inputs:
+- {name: data_json, type: String, description: 'source path and file name (default: data.csv)'}
+- {name: master, type: String, description: 'url of master (default: local mode)'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+- {name: output_data_parquet, type: String, description: 'destination path and parquet file name (default: data.parquet)'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-spark-json-to-parquet:0.2h
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./spark-json-to-parquet.ipynb output_data_parquet="$0" data_json="$1" master="$2" data_dir="$3" 
+        - {outputPath: output_data_parquet}
+        - {inputValue: data_json}
+        - {inputValue: master}
+        - {inputValue: data_dir}

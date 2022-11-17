@@ -1,5 +1,5 @@
 name: input-url
-description: This component reads a file from a HTTP(s) source via wget
+description: This component reads a file from a HTTP(s) source via wget CLAIMED v0.2h
 
 inputs:
 - {name: url, type: String, description: 'url of souce'}
@@ -12,12 +12,12 @@ outputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-input-url:0.1b
+        image: romeokienzler/claimed-input-url:0.2h
         command:
         - sh
         - -ec
         - |
-          python ./input-url.py output_data="$0" url="$1" data_dir="$2" 
+          ipython ./input-url.ipynb output_data="$0" url="$1" data_dir="$2" 
         - {outputPath: output_data}
         - {inputValue: url}
         - {inputValue: data_dir}
