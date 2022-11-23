@@ -14,7 +14,8 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../component-library/transform/spark-json-to-parquet.ipynb",
+              "dependencies": [],
+              "include_subdirectories": false,
               "outputs": [],
               "env_vars": [
                 {
@@ -26,12 +27,13 @@
                   "value": "2015-01-01-15.json.gz"
                 }
               ],
-              "kubernetes_secrets": [],
-              "kubernetes_tolerations": [],
               "kubernetes_pod_annotations": [],
-              "dependencies": [],
-              "include_subdirectories": false,
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
               "mounted_volumes": [],
+              "filename": "../component-library/transform/spark-json-to-parquet.ipynb",
               "runtime_image": "continuumio/anaconda3:2021.11"
             },
             "label": "",
@@ -85,7 +87,8 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../component-library/output/upload-to-cos.ipynb",
+              "dependencies": [],
+              "include_subdirectories": false,
               "outputs": [],
               "env_vars": [
                 {
@@ -113,12 +116,13 @@
                   "value": "2015-01-01-15.parquet"
                 }
               ],
-              "kubernetes_secrets": [],
-              "kubernetes_tolerations": [],
               "kubernetes_pod_annotations": [],
-              "dependencies": [],
-              "include_subdirectories": false,
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
               "mounted_volumes": [],
+              "filename": "../component-library/output/upload-to-cos.ipynb",
               "runtime_image": "continuumio/anaconda3:2021.11"
             },
             "label": "",
@@ -172,8 +176,8 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "../component-library/input/input-url.ipynb",
-              "runtime_image": "continuumio/anaconda3:2021.11",
+              "dependencies": [],
+              "include_subdirectories": false,
               "outputs": [],
               "env_vars": [
                 {
@@ -189,12 +193,14 @@
                   "value": "2015-01-01-15.json.gz"
                 }
               ],
-              "kubernetes_secrets": [],
-              "kubernetes_tolerations": [],
               "kubernetes_pod_annotations": [],
-              "dependencies": [],
-              "include_subdirectories": false,
-              "mounted_volumes": []
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "../component-library/input/input-url.ipynb",
+              "runtime_image": "continuumio/anaconda3:2021.11"
             },
             "label": "",
             "ui_data": {
