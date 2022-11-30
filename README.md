@@ -62,7 +62,8 @@ To learn more on how this library works in practice, please have a look at the f
 
 ## Getting Help
 
-We welcome your questions, ideas, and feedback. Please create an [issue](https://github.com/IBM/claimed/issues) or a [discussion thread](https://github.com/IBM/claimed/discussions).
+We welcome your questions, ideas, and feedback. Please create an [issue](https://github.com/claimed-framework/component-library/issues) or a [discussion thread](https://github.com/claimed-framework/component-library/discussions).
+Please see [VULNERABILITIES.md](VULNERABILITIES.md) for reporting vulnerabilities.
 
 ## Contributing to CLAIMED
 Interested in helping make CLAIMED better? We encourage you to take a look at our 
