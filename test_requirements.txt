@@ -1,1 +1,2 @@
 ipython==8.7.0
+nbformat==5.7.0
