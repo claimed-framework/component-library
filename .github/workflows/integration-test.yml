@@ -30,4 +30,5 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Full integration test
       run: |
+        cd component-library
         python ./run_tests.py
