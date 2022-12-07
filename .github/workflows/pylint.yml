@@ -1,4 +1,4 @@
-name: Pylint
+name: Static Code Analysis (Pylint)
 
 on: [push]
 
