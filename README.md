@@ -73,3 +73,6 @@ Please see [VULNERABILITIES.md](VULNERABILITIES.md) for reporting vulnerabilitie
 ## Contributing to CLAIMED
 Interested in helping make CLAIMED better? We encourage you to take a look at our 
 [Contributing](CONTRIBUTING.md) page.
+
+## License
+This software is released under Apache License v2.0
