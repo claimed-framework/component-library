@@ -3,7 +3,7 @@
 
 
 
-# CLAIMED - The Component Library for AI, Machine Learning, ETL, and Data Science
+# CLAIMED - The domponent Library for AI, Machine Learning, ETL, and Data Science
 
 **TL;DR**
 - set of re-usable coarse-grained components (just a bunch of code)
