@@ -13,7 +13,7 @@
 - persistence layer / queue agnostic: Cloud Object Storage, file systems, PVC, Kafka, MQTT
 - just use Python - no other skills required (no Kubeflow component YAML, maven, Java)
 - 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science)
-- upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data.
+- upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
 
 
@@ -48,7 +48,7 @@ Each notebook is following a similar format.
 1. The first cell contains a description of the component itself.
 2. The second cell installs all dependencies using pip3.
 3. The third cell imports all dependencies.
-4. The fourth cell contains a list of dependencies, input parameters, and return values as Python comments
+4. The fourth cell contains a list of dependencies, input parameters, and return values as Python comments.
 5. The fifth cell reads the input parameters from environment variables.
 
 
