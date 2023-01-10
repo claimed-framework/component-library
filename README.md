@@ -13,7 +13,7 @@
 - persistence layer / queue agnostic: Cloud Object Storage, file systems, PVC, Kafka, MQTT
 - just use Python - no other skills required (no Kubeflow component YAML, maven, Java)
 - 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science)
-- upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
+- upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data.
 
 
 
