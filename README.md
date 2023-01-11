@@ -7,7 +7,7 @@
 
 **TL;DR**
 - set of re-usable coarse-grained components (just a bunch of code)
-- think of tasks, not functions (e.g., read from a database, transform data, train model, deploy model)
+- think of tasks, not functions (e.g., read from a database, transform data, train model, deploy model, store result to cloud object storage)
 - write once, runs everywhere: Kubeflow, Apache Airflow, CLI, KNative, Docker, Kubernetes
 - orchestrate with anything: shell script, Kubeflow, Airflow, Argo, Tekton
 - persistence layer / queue agnostic: Cloud Object Storage, file systems, PVC, Kafka, MQTT
