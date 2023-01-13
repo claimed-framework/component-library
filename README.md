@@ -15,7 +15,7 @@
 - 1st class citizen in JupyterLab and the Elyra Pipeline Editor (creating a low code / no code IDE for data science)
 - upstream repository to IBM Watson Studio Pipelines contributed components in IBM Cloud Pak for Data
 
-
+You also might wanna have a look at our [FAQ](FAQ.md)
 
 
 CLAIMED is a component library for artificial intelligence, machine learning, "extract, transform, load" processes, and data science. The goal is to enable low-code/no-code rapid prototyping style programming to seamlessly CI/CD into production. The library provides ready-made components for various business domains, supports multiple computer languages, works on different data flow editors and command line tools, and runs on various execution engines including Kubernetes, KNative, Kubeflow, Airflow or plain docker. To demonstrate its utility, we constructed a workflow composed exclusively of this library's components. To display the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scan dataset [covidata]. We created a deep learning model, which is supposed to classify exams as either COVID-19 positive or negative. We built the pipeline with Elyra's Pipeline Visual Editor, with support for local, Airflow, and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
