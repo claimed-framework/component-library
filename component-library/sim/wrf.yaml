@@ -1,0 +1,12 @@
+---
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: wrf
+    labels:
+      app: wrf
+  spec:
+    containers:
+      - name: wrf
+        image: docker.io/romeokienzler/mywrfcontainerimage
+        command: ["sleep", "infinity"]
