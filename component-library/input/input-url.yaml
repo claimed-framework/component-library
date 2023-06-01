@@ -1,5 +1,5 @@
 name: input-url
-description: This component reads a file from a HTTP(s) source via wget CLAIMED v0.2n
+description: This component reads a file from a HTTP(s) source via wget CLAIMED v0.2i
 
 inputs:
 - {name: url, type: String, description: 'url of souce'}
@@ -7,12 +7,12 @@ inputs:
 
 
 outputs:
-- {name: output_data, type: OutputPath, description: 'path and file name for output'}
+- {name: output_data, type: String, description: 'path and file name for output'}
 
 
 implementation:
     container:
-        image: romeokienzler/claimed-input-url:0.2n
+        image: romeokienzler/claimed-input-url:0.2i
         command:
         - sh
         - -ec
