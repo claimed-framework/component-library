@@ -6,7 +6,7 @@ inputs:
 - {name: secret_access_key, type: String, description: 'secret access key'}
 - {name: endpoint, type: String, description: 'cos/s3 endpoint'}
 - {name: bucket_name, type: String, description: 'cos bucket name'}
-- {name: source_file, type: String, description: 'source file to be uploaded'}
+- {name: source_file, type: OutputPath, description: 'source file to be uploaded'}
 - {name: destination_file, type: String, description: 'destination file name'}
 - {name: data_dir, type: String, description: 'temporary data folder'}
 
