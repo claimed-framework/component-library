@@ -1,6 +1,6 @@
 name: util-cos
 description: This component provides COS utility functions (e.g. creating a bucket, listing contents of a bucket)
- CLAIMED v0.26
+ CLAIMED v0.29
 
 inputs:
 - {name: access_key_id, type: String, description: access key id}
@@ -17,7 +17,7 @@ inputs:
 
 implementation:
     container:
-        image: romeokienzler/claimed-util-cos:0.26
+        image: romeokienzler/claimed-util-cos:0.29
         command:
         - sh
         - -ec
