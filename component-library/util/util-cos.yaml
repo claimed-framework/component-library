@@ -1,0 +1,35 @@
+name: util-cos
+description: This component provides COS utility functions (e.g. creating a bucket, listing contents of a bucket)
+ CLAIMED v0.29
+
+inputs:
+- {name: access_key_id, type: String, description: access key id}
+- {name: secret_access_key, type: String, description: secret access key}
+- {name: endpoint, type: String, description: cos/s3 endpoint}
+- {name: bucket_name, type: String, description: cos bucket name}
+- {name: path, type: String, description: path, default: ''}
+- {name: source, type: String, description: source in case of uploads, default:  ''}
+- {name: target, type: String, description: target in case of downloads, default:  ''}
+- {name: recursive, type: Boolean, description: recursive, default: 'False'}
+- {name: operation, type: String, description: operation (mkdir|ls|find|get|put|rm|sync_to_cos|sync_to_local)}
+- {name: log_level, type: String, description: log level, default:  'INFO'}
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-util-cos:0.29
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./util-cos.ipynb access_key_id="$0" secret_access_key="$1" endpoint="$2" bucket_name="$3" path="$4" source="$5" target="$6" recursive="$7" operation="$8" log_level="$9" 
+        - {inputValue: access_key_id}
+        - {inputValue: secret_access_key}
+        - {inputValue: endpoint}
+        - {inputValue: bucket_name}
+        - {inputValue: path}
+        - {inputValue: source}
+        - {inputValue: target}
+        - {inputValue: recursive}
+        - {inputValue: operation}
+        - {inputValue: log_level}
