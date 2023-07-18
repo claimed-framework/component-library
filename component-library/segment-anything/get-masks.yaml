@@ -1,0 +1,31 @@
+name: Segment-Anything
+description: Get masks from an input image with input prompt. 
+ CLAIMED v$version
+
+inputs:
+- {name: model_type, type: String, description: 'model type'}
+- {name: checkpoint_path, type: String, description: 'different model type requires different check point'}
+- {name: input_image_path, type: String, description: 'input image'}
+- {name: input_array, type: String, description: 'x,y,x,y,x,y... for points. Multiple allowed'}
+- {name: input_box, type: String, description: 'x,y,x,y for box. Only one box allowed'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-Segment-Anything:$version
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./get-masks.ipynb model_type="$0" checkpoint_path="$1" input_image_path="$2" input_array="$3" input_box="$4" data_dir="$5" 
+        - {outputPath: None}
+        - {inputValue: model_type}
+        - {inputValue: checkpoint_path}
+        - {inputValue: input_image_path}
+        - {inputValue: input_array}
+        - {inputValue: input_box}
+        - {inputValue: data_dir}
