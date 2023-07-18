@@ -1,0 +1,27 @@
+name: Segment-Anything
+description: Generate mask for an given image.
+ CLAIMED v$version
+
+inputs:
+- {name: model_type, type: String, description: 'model type'}
+- {name: checkpoint_path, type: String, description: 'different model type requires different check point'}
+- {name: input_image_path, type: String, description: 'input image'}
+- {name: data_dir, type: String, description: 'temporal data storage for local execution'}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-Segment-Anything:$version
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./generate-masks.ipynb model_type="$0" checkpoint_path="$1" input_image_path="$2" data_dir="$3" 
+        - {outputPath: None}
+        - {inputValue: model_type}
+        - {inputValue: checkpoint_path}
+        - {inputValue: input_image_path}
+        - {inputValue: data_dir}
