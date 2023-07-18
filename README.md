@@ -58,6 +58,13 @@ Each notebook is following a similar format.
 
 To learn more on how this library works in practice, please have a look at the following [video](https://www.youtube.com/watch?v=FuV2oG55C5s)
 
+
+## Achievements
+
+🏆 [IEEE OSS AWARD 2023](https://arxiv.org/abs/2307.06824)
+
+Kienzler, R., Khan, R., Nilmeier, J., Nesic, I., &amp; Haddad, I. (IEEE OSS 2023). Claimed -- the open source framework for building coarse-grained operators for accelerated discovery in science. [arXiv:2307.06824](https://arxiv.org/abs/2307.06824)
+
 ## Related work
 [Ploomber](https://github.com/ploomber/ploomber)
 
