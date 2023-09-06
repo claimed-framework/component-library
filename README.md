@@ -18,7 +18,16 @@
 You also might wanna have a look at our [FAQ](FAQ.md)
 
 
-CLAIMED is a component library for artificial intelligence, machine learning, "extract, transform, load" processes, and data science. The goal is to enable low-code/no-code rapid prototyping style programming to seamlessly CI/CD into production. The library provides ready-made components for various business domains, supports multiple computer languages, works on different data flow editors and command line tools, and runs on various execution engines including Kubernetes, KNative, Kubeflow, Airflow or plain docker. To demonstrate its utility, we constructed a workflow composed exclusively of this library's components. To display the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scan dataset [covidata]. We created a deep learning model, which is supposed to classify exams as either COVID-19 positive or negative. We built the pipeline with Elyra's Pipeline Visual Editor, with support for local, Airflow, and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
+CLAIMED is a operator component framework for artificial intelligence, machine learning, "extract, transform, load" processes, and data science. The goal is to enable low-code/no-code rapid prototyping style programming to seamlessly CI/CD into production. The open source CLAIMED component library provides ready-made components for various business domains, supports multiple computer languages, works on different data flow editors and command line tools, and runs on various execution engines including Kubernetes (Job), Knative (Pod), Kubeflow (KFP component) and on the CLI using docker or podman. In addition to the open source library, clients create their private operator libraries using in conjunction with the open source one.
+Core of CLAIMED is C3, the Claimed Component Compiler which takes source code in the form of jupyter notebooks or source files and compiles it to various target runtime environments, allowing to add additional targets as plugins. Currently, C3 supports python notebooks and python scripts as input and Kubernetes/OpenShift, Kubeflow Pipeline Components/RedHat OpenShift DataScience Pipelines, and plain docker/podmain (via CLAIMED CLI)
+C3 does the following steps:
+- extract meta information (name, description, interface, dependencies (requirements)) from source
+- create (docker) container with dependencies and source added
+- push container to registry
+- create kubernetes-job.yaml
+- create kubeflow-pipeline-component.yaml
+
+To demonstrate its utility, we constructed a workflow composed exclusively of this library's components. To display the capabilities of this library, we made use of a publicly available Computed Tomography (CT) scan dataset [covidata]. We created a deep learning model, which is supposed to classify exams as either COVID-19 positive or negative. We built the pipeline with Elyra's Pipeline Visual Editor, with support for local, Airflow, and Kubeflow execution [https://arxiv.org/abs/2103.03281](https://arxiv.org/abs/2103.03281).
 
 
 ![Low Code / No Code pipeline creation tool for data science](https://github.com/IBM/claimed/raw/master/images/elyra_pipeline.png)
