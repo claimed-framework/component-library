@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
     
 env:
-  version: 0.1
   repository: docker.io/blumenstiel
+  log_level: DEBUG
 
 jobs:
 
@@ -31,6 +31,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install claimed-c3
+    - name: Debug Git Status
+      run: git status
+    - name: Debug Git Log
+      run: git log -n 1
     - name: Build operators with C3
       run: |
         git config --global user.name 'claimed-framework'
