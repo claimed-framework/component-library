@@ -6,11 +6,12 @@
 echo 'Running build_operators.sh'
 
 # Get list of changed files from last commit
+git checkout main
 file_list=$(git diff-tree --no-commit-id --name-only -r HEAD)
 echo 'Commit file list: '$file_list
 
 # Get default repository from env
-default_repository=${repository:-docker.io/blumenstiel}
+default_repository=${repository:-docker.io/romeokienzler}
 echo 'default repository: '$default_repository
 default_log_level=${log_level:-INFO}
 echo 'default log_level: '$default_log_level

@@ -1,6 +1,5 @@
 """
-This operator sleeps for a specified time.
-The idle pod can be used for testing code and accessing the terminal.
+This operator sleeps for a specified time. The idle pod can be used for testing code and accessing the terminal.
 """
 
 import os
