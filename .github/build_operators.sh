@@ -5,10 +5,15 @@
 
 echo 'Running build_operators.sh'
 
-# Get list of changed files from last commit
-git checkout main
-file_list=$(git diff-tree --no-commit-id --name-only -r main)
-echo 'Commit file list: '$file_list
+# Get commit ids
+log_file=".github/build_operators_commits.txt"
+last_commit=$(sed -n '$p' $log_file)
+current_commit=$(git rev-parse --short main)
+# Get list of changed files from last build
+file_list=$(git diff --name-only $last_commit $current_commit)
+echo 'File list:\n'$file_list
+# Add current commit id to log
+echo "$current_commit" >> "$log_file"
 
 # Get default repository from env
 default_repository=${repository:-docker.io/romeokienzler}
