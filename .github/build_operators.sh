@@ -5,8 +5,10 @@
 
 # Get list of changed files from last commit
 file_list=$(git diff-tree --no-commit-id --name-only -r HEAD)
-file_list=operators/dummy/dummy.py
 commit=false
+
+# Get default repository from env
+default_repository=$repository
 
 for file in $file_list
 do
@@ -59,7 +61,7 @@ do
       command+=' -r '$repository
     else
       # Use default repository
-      command+=' -r docker.io/claimed-framework'
+      command+=' -r '$default_repository
     fi
 
     # Optionally add version
