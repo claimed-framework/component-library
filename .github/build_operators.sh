@@ -93,6 +93,7 @@ do
       # Add new files to git
       for git_file in $git_files
       do
+        echo
         git add $git_file
       done
     else
@@ -104,6 +105,6 @@ done
 # Push files to main if an operator was created
 if [[ $commit = true ]]; then
   git pull
-  git commit -m "operators build [skip travis]"
+  git commit -m "operators build [skip ci]"
   git push origin HEAD:main
 fi

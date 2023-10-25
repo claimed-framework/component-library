@@ -32,4 +32,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install claimed-c3
     - name: Build operators with C3
-      run: bash .github/build_operators.sh
+      run: |
+        git config --global user.name 'claimed-framework'
+        git config --global user.email 'claimed-framework@proton.me'
+        bash .github/build_operators.sh
