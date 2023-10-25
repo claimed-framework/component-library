@@ -1,0 +1,25 @@
+name: dummy
+description: "This operator sleeps for a specified time. The idle pod can be used for testing code and accessing the terminal. – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: seconds, type: Integer, description: "number of seconds to sleep (default: 600)", default: "600"}
+- {name: shcode, type: String, description: "Optional shell script to be executed before sleep.", default: "None"}
+- {name: pycode, type: String, description: "Optional python code to be executed before sleep.", default: "None"}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: docker.io/blumenstiel/claimed-dummy:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./dummy.py log_level="${0}" seconds="${1}" shcode="${2}" pycode="${3}" 
+        - {inputValue: log_level}
+        - {inputValue: seconds}
+        - {inputValue: shcode}
+        - {inputValue: pycode}
