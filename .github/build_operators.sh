@@ -7,7 +7,7 @@ echo 'Running build_operators.sh'
 
 # Get list of changed files from last commit
 git checkout main
-file_list=$(git diff-tree --no-commit-id --name-only -r HEAD)
+file_list=$(git diff-tree --no-commit-id --name-only -r main)
 echo 'Commit file list: '$file_list
 
 # Get default repository from env
