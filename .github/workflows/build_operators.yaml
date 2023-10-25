@@ -33,8 +33,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install claimed-c3
-    - name: Debug Git Log
-      run: git log -n 10
     - name: Build operators with C3
       run: |
         git config --global user.name 'claimed-framework'

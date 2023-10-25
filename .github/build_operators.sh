@@ -8,10 +8,12 @@ echo 'Running build_operators.sh'
 # Get commit ids
 log_file=".github/build_operators_commits.txt"
 last_commit=$(sed -n '$p' $log_file)
+echo "Last commit: "$last_commit
 current_commit=$(git rev-parse --short main)
+echo "Current commit: "$current_commit
 # Get list of changed files from last build
 file_list=$(git diff --name-only $last_commit $current_commit)
-echo 'File list:\n'$file_list
+echo 'File list: '$file_list
 # Add current commit id to log
 echo "$current_commit" >> "$log_file"
 
@@ -26,6 +28,14 @@ for file in $file_list
 do
   # Check if the file is in the directory operators and ends with .py or .ipynb
   if [[ $file =~ ^operators/.*\.(py|ipynb)$ ]]; then
+    echo "Processing file "$file
+
+    if ! [ -f $file ]; then
+      # File not found in main
+      echo "File not found."
+      continue
+    fi
+
     dir=$(dirname "$file")
     bname="$(basename ${file})"
 
@@ -42,6 +52,10 @@ do
     config_file=${file%.*}.cfg
     if [ -f $config_file ]; then
       while read LINE; do declare "$LINE"; done < $config_file
+    else
+      # Missing cfg file
+      echo "Config file not found, skipping file. Please add <operator>.cfg for to create the operator."
+      continue
     fi
 
     # Get c3 command
@@ -127,8 +141,7 @@ do
 done
 
 # Push files to main if an operator was created
-if [[ $commit = true ]]; then
-  git pull
-  git commit -m "operators build [skip ci]"
-  git push origin HEAD:main
-fi
+git pull
+git add $log_file
+git commit -m "operators build [skip ci]"
+git push origin HEAD:main
