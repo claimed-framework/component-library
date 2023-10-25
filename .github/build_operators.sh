@@ -93,7 +93,6 @@ do
       # Add new files to git
       for git_file in $git_files
       do
-        echo
         git add $git_file
       done
     else
