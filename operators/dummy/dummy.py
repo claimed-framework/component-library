@@ -19,7 +19,7 @@ pycode = os.getenv('pycode', None)
 if __name__ == '__main__':
     if shcode is not None:
         logging.info('Execute shell script:\n' + shcode)
-        exec(shcode)
+        os.system(shcode)
 
     if pycode is not None:
         logging.info('Execute python code:\n' + pycode)
