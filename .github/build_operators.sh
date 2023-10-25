@@ -42,6 +42,7 @@ do
     # Reset variables
     gridwrapper=false
     cos=false
+    process=false
     repository=False
     version=false
     additional_files=false
