@@ -13,7 +13,7 @@ outputs:
 
 implementation:
     container:
-        image: docker.io/blumenstiel/claimed-dummy:0.1
+        image: docker.io/blumenstiel/claimed-dummy:0.2
         command:
         - sh
         - -ec

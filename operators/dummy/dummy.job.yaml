@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: dummy
-        image: docker.io/blumenstiel/claimed-dummy:0.1
+        image: docker.io/blumenstiel/claimed-dummy:0.2
         command: ["/opt/app-root/bin/python","/opt/app-root/src/dummy.py"]
         env:
         - name: log_level
