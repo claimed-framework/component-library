@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
     
 env:
-  repository: docker.io/blumenstiel
-  log_level: DEBUG
+  repository: docker.io/romeokienzler
+  log_level: INFO
 
 jobs:
 
