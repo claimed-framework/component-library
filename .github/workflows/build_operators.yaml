@@ -8,7 +8,7 @@ on:
     
 env:
   version: 0.1
-  repository: docker.io/romeokienzler
+  repository: docker.io/blumenstiel
 
 jobs:
 
