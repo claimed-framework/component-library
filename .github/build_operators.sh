@@ -3,19 +3,34 @@
 # The KFP component yaml and Kubernetes job yaml files are added to git and pushed to branch main.
 # TODO: claimed-c3 v0.2.5 is using the default version 0.1 and cannot auto-increase the version.
 
+echo 'Running build_operators.sh'
+
 # Get list of changed files from last commit
 file_list=$(git diff-tree --no-commit-id --name-only -r HEAD)
-commit=false
+echo 'Commit file list: '$file_list
 
 # Get default repository from env
-default_repository=$repository
+default_repository=${repository:-docker.io/blumenstiel}
+echo 'default repository: '$default_repository
+default_log_level=${log_level:-INFO}
+echo 'default log_level: '$default_log_level
 
+commit=false
 for file in $file_list
 do
   # Check if the file is in the directory operators and ends with .py or .ipynb
   if [[ $file =~ ^operators/.*\.(py|ipynb)$ ]]; then
     dir=$(dirname "$file")
     bname="$(basename ${file})"
+
+    # Reset variables
+    gridwrapper=false
+    cos=false
+    repository=False
+    version=false
+    additional_files=false
+    log_level=false
+    dockerfile_template_path=false
 
     # Reading settings from optional cfg file
     config_file=${file%.*}.cfg
@@ -74,9 +89,11 @@ do
       command+=' '$additional_files
     fi
 
-    # Optionally add log_level
+    # Add log_level
     if [[ -n $log_level && $log_level != 'false' ]]; then
       command+=' -l '$log_level
+    else
+      command+=' -l '$default_log_level
     fi
 
     # Optionally add dockerfile_template_path
