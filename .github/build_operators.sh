@@ -5,6 +5,7 @@
 
 echo 'Running build_operators.sh'
 
+git checkout main
 # Get commit ids
 log_file=".github/build_operators_commits.txt"
 last_commit=$(sed -n '$p' $log_file)
@@ -16,14 +17,15 @@ file_list=$(git diff --name-only $last_commit $current_commit)
 echo 'File list: '$file_list
 # Add current commit id to log
 echo "$current_commit" >> "$log_file"
+git add $log_file
 
 # Get default repository from env
 default_repository=${repository:-docker.io/romeokienzler}
 echo 'default repository: '$default_repository
 default_log_level=${log_level:-INFO}
 echo 'default log_level: '$default_log_level
+image_list=''
 
-commit=false
 for file in $file_list
 do
   # Check if the file is in the directory operators and ends with .py or .ipynb
@@ -48,6 +50,7 @@ do
     additional_files=false
     log_level=false
     dockerfile_template_path=false
+    image=''
 
     # Reading settings from optional cfg file
     config_file=${file%.*}.cfg
@@ -129,12 +132,23 @@ do
     # Check error code from command
     if [ $? -eq 0 ]; then
       echo "Operator created."
-      commit=true
       # Add new files to git
       for git_file in $git_files
       do
         git add $git_file
       done
+
+      # Get image name from yaml file
+      while read line;
+      do
+        # strip line
+        line=${line// /}
+        # check of image substring and replace first : with =
+        if [[ $line = image:* ]]; then declare "${line/:/=}"; fi
+      done < ${git_files##* }
+      # add image to image_list
+      image_list+=' '$image
+
     else
       echo "Command failed with exit status $?"
     fi
@@ -143,6 +157,13 @@ done
 
 # Push files to main if an operator was created
 git pull
-git add $log_file
 git commit -m "operators build [skip ci]"
 git push origin HEAD:main
+
+# Adding tags for each generated image
+for image in $image_list
+do
+  echo "Add tag ${image/:/=}"
+  git tag -f ${image/:/=} -m $image;
+done
+git push --tags
