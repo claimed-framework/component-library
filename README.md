@@ -1,7 +1,7 @@
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/6718/badge)](https://bestpractices.coreinfrastructure.org/projects/6718)
 [![GitHub](https://img.shields.io/badge/issue_tracking-github-blue.svg)](https://github.com/claimed-framework/component-library/issues)
 
-
+#This is the github project for the below Components.
 
 # CLAIMED - The Component Library for AI, Machine Learning, ETL, and Data Science
 
