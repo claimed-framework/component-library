@@ -5,7 +5,7 @@
 
 # CLAIMED - The Component Library for AI, Machine Learning, ETL, and Data Science
 
-**TL;DR**
+**TL;DR** [Video on YouTube](https://www.youtube.com/watch?v=IhrIzLgY-Cg)
 - set of re-usable coarse-grained components (just a bunch of code)
 - think of tasks, not functions (e.g., read from a database, transform data, train model, deploy model, store result to cloud object storage)
 - write once, runs everywhere: Kubeflow, Apache Airflow, CLI, KNative, Docker, Kubernetes
