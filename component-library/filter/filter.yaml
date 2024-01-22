@@ -1,0 +1,23 @@
+name: file_name
+description: "# filter Filters rows based on predicate on pandas data frame Example 'predicate=~metadata.filename.str.contains('.gz') ' => filters all rows where column 'filename' contains '.gz' – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: predicate, type: String, description: "predicate (as described in documentation of the component)"}
+- {name: file_name, type: String, description: "file name / path of the CSV file to read"}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-file_name:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./filter.py log_level="${0}" predicate="${1}" file_name="${2}" 
+        - {inputValue: log_level}
+        - {inputValue: predicate}
+        - {inputValue: file_name}
