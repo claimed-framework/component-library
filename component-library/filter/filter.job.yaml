@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: filter
-        image: romeokienzler/claimed-filter:0.1
+        image: romeokienzler/claimed-filter:0.5
         workingDir: /opt/app-root/src/
         command: ["/opt/app-root/bin/ipython","filter.py"]
         env:
@@ -17,6 +17,8 @@ spec:
           value: value_of_predicate
         - name: file_name
           value: value_of_file_name
+        - name: output_file_name
+          value: value_of_output_file_name
       restartPolicy: OnFailure
       imagePullSecrets:
         - name: image_pull_secret
