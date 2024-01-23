@@ -6,7 +6,7 @@ baseCommand: "claimed"
 inputs:
   component:
     type: string
-    default: romeokienzler/claimed-filter:0.1
+    default: romeokienzler/claimed-filter:0.5
     inputBinding:
       position: 1
       prefix: --component
@@ -28,6 +28,12 @@ inputs:
     inputBinding:
       position: 4
       prefix: --file_name
+  output_file_name:
+    type: string
+    default: None
+    inputBinding:
+      position: 5
+      prefix: --output_file_name
 
 
 outputs: []
