@@ -6,3 +6,8 @@
 # CLAIMED - It's time to concentrate on your code only
 
 For more information, please visit the project's [website](https://claimed-framework.github.io/)
+
+Weekly community call (co-located with Elyra atm)  
+[https://ibm.webex.com/meet/romeo.kienzler1](https://ibm.webex.com/meet/romeo.kienzler1)  
+Every Friday, 8:30 AM PST, 11:30 AM EST, 5:30 PM CET, 10 PM IST
+
