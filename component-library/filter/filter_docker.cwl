@@ -1,38 +1,34 @@
+#!/usr/bin/env cwl-runner
 cwlVersion: v1.2
 class: CommandLineTool
-
-baseCommand: "claimed"
-
+baseCommand: ["/opt/app-root/bin/ipython","/opt/app-root/src/filter.py"]
+hints:
+  DockerRequirement:
+    dockerPull:  romeokienzler/claimed-filter:0.5
 inputs:
-  component:
-    type: string
-    default: romeokienzler/claimed-filter:0.5
-    inputBinding:
-      position: 1
-      prefix: --component
   log_level:
     type: string
     default: "INFO"
     inputBinding:
-      position: 2
+      position: 1
       prefix: --log_level
   predicate:
     type: string
     default: None
     inputBinding:
-      position: 3
+      position: 2
       prefix: --predicate
   file_name:
     type: string
     default: None
     inputBinding:
-      position: 4
+      position: 3
       prefix: --file_name
   output_file_name:
     type: string
     default: None
     inputBinding:
-      position: 5
+      position: 4
       prefix: --output_file_name
 
 outputs:
