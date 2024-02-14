@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world
+spec:
+  parallelism: 100
+  template:
+    spec:
+      containers:
+      - name: hello-world
+        image: docker.io/romeokienzler/claimed-hello-world:0.1
+        command: ["/opt/app-root/bin/python","/opt/app-root/src/hello_world.py"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: name
+          value: value_of_name
+        - name: place
+          value: value_of_place
+        - name: count
+          value: value_of_count
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret

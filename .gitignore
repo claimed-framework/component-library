@@ -57,3 +57,4 @@ celerybeat.pid
 .pyre/
 .pytype/
 cython_debug/
+venv/
