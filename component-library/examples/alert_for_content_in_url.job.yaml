@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: alert-for-content-in-url
+spec:
+  template:
+    spec:
+      containers:
+      - name: alert-for-content-in-url
+        image: romeokienzler/claimed-alert-for-content-in-url:0.6
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","claimed_alert_for_content_in_url.ipynb"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: url_to_notify
+          value: value_of_url_to_notify
+        - name: url_to_query
+          value: value_of_url_to_query
+        - name: filter_content
+          value: value_of_filter_content
+        - name: sleep
+          value: value_of_sleep
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret

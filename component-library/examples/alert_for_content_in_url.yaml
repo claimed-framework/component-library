@@ -1,0 +1,27 @@
+name: sleep
+description: "# alert_for_content_in_url Reqularly check if a URL has a specific content and if true call another url – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: url_to_notify, type: String, description: ""}
+- {name: url_to_query, type: String, description: ""}
+- {name: filter_content, type: String, description: ""}
+- {name: sleep, type: Integer, description: "", default: "30'"}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: romeokienzler/claimed-sleep:0.6
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./claimed_alert_for_content_in_url.ipynb log_level="${0}" url_to_notify="${1}" url_to_query="${2}" filter_content="${3}" sleep="${4}" 
+        - {inputValue: log_level}
+        - {inputValue: url_to_notify}
+        - {inputValue: url_to_query}
+        - {inputValue: filter_content}
+        - {inputValue: sleep}

@@ -1,0 +1,25 @@
+name: hello-world
+description: "# hello-world This is the description of hello world – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: name, type: String, description: "the name to greet (mandatory)"}
+- {name: place, type: String, description: "the place to greet (optional)", default: "World"}
+- {name: count, type: Integer, description: "the number of times to repeat the greeting (optional)", default: "'1'"}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: docker.io/romeokienzler/claimed-hello-world:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          python ./hello_world.py log_level="${0}" name="${1}" place="${2}" count="${3}" 
+        - {inputValue: log_level}
+        - {inputValue: name}
+        - {inputValue: place}
+        - {inputValue: count}
