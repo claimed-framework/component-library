@@ -1,33 +1,27 @@
-name: output-upload-to-cos
-description: Uploads a file to any S3 compliant Cloud Object Storage CLAIMED v0.2n
+name: process_target_file_pattern
+description: "# output-upload-to-cos Uploads a file to any S3 compliant Cloud Object Storage – CLAIMED V0.1"
 
 inputs:
-- {name: access_key_id, type: String, description: 'access key id'}
-- {name: secret_access_key, type: String, description: 'secret access key'}
-- {name: endpoint, type: String, description: 'cos/s3 endpoint'}
-- {name: bucket_name, type: String, description: 'cos bucket name'}
-- {name: source_file, type: OutputPath, description: 'source file to be uploaded'}
-- {name: destination_file, type: String, description: 'destination file name'}
-- {name: data_dir, type: String, description: 'temporary data folder'}
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: target, type: String, description: "target in format: cos://access_key_id:secret_access_key@endpoint/bucket/path"}
+- {name: source_file_pattern, type: String, description: "source folder and file pattern (glob)"}
+- {name: find_recursive, type: Boolean, description: "find_recursive, if True, will search for files in subfolders specified in source_file_pattern. Default is True", default: "True'"}
+- {name: process_target_file_pattern, type: String, description: "process source file path on target using regex. Default is None", default: "None"}
 
 
 outputs:
-- {name: output_dummy, type: String, description: 'dummy_output (to be fixed once C3 supports < 1 outputs)'}
 
 
 implementation:
     container:
-        image: romeokienzler/claimed-output-upload-to-cos:0.2n
+        image: romeokienzler/claimed-process_target_file_pattern:0.8
         command:
         - sh
         - -ec
         - |
-          ipython ./upload-to-cos.ipynb output_dummy="$0" access_key_id="$1" secret_access_key="$2" endpoint="$3" bucket_name="$4" source_file="$5" destination_file="$6" data_dir="$7" 
-        - {outputPath: output_dummy}
-        - {inputValue: access_key_id}
-        - {inputValue: secret_access_key}
-        - {inputValue: endpoint}
-        - {inputValue: bucket_name}
-        - {inputValue: source_file}
-        - {inputValue: destination_file}
-        - {inputValue: data_dir}
+          ipython ./claimed_upload-to-cos.ipynb log_level="${0}" target="${1}" source_file_pattern="${2}" find_recursive="${3}" process_target_file_pattern="${4}" 
+        - {inputValue: log_level}
+        - {inputValue: target}
+        - {inputValue: source_file_pattern}
+        - {inputValue: find_recursive}
+        - {inputValue: process_target_file_pattern}
