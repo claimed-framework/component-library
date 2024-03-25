@@ -6,7 +6,7 @@ baseCommand: "claimed"
 inputs:
   component:
     type: string
-    default: romeokienzler/claimed-filter:0.6
+    default: romeokienzler/claimed-upload-to-cos:0.8
     inputBinding:
       position: 1
       prefix: --component
@@ -16,24 +16,30 @@ inputs:
     inputBinding:
       position: 2
       prefix: --log_level
-  predicate:
+  target:
     type: string
     default: None
     inputBinding:
       position: 3
-      prefix: --predicate
-  file_name:
+      prefix: --target
+  source_file_pattern:
     type: string
     default: None
     inputBinding:
       position: 4
-      prefix: --file_name
-  output_file_name:
+      prefix: --source_file_pattern
+  find_recursive:
+    type: bool
+    default: True
+    inputBinding:
+      position: 5
+      prefix: --find_recursive
+  process_target_file_pattern:
     type: string
     default: None
     inputBinding:
-      position: 5
-      prefix: --output_file_name
+      position: 6
+      prefix: --process_target_file_pattern
 
 
 outputs: []

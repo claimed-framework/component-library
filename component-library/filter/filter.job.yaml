@@ -7,9 +7,9 @@ spec:
     spec:
       containers:
       - name: filter
-        image: romeokienzler/claimed-filter:0.5
+        image: romeokienzler/claimed-filter:0.6
         workingDir: /opt/app-root/src/
-        command: ["/opt/app-root/bin/ipython","filter.py"]
+        command: ["/opt/app-root/bin/ipython","claimed_filter.ipynb"]
         env:
         - name: log_level
           value: value_of_log_level

@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: upload-to-cos
+spec:
+  template:
+    spec:
+      containers:
+      - name: upload-to-cos
+        image: romeokienzler/claimed-upload-to-cos:0.8
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","claimed_upload-to-cos.ipynb"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: target
+          value: value_of_target
+        - name: source_file_pattern
+          value: value_of_source_file_pattern
+        - name: find_recursive
+          value: value_of_find_recursive
+        - name: process_target_file_pattern
+          value: value_of_process_target_file_pattern
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
