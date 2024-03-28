@@ -1,35 +1,27 @@
 name: util-cos
-description: This component provides COS utility functions (e.g. creating a bucket, listing contents of a bucket)
- CLAIMED v0.35
+description: "# util-cos This component provides COS utility functions (e.g. creating a bucket, listing contents of a bucket)  – CLAIMED V0.1"
 
 inputs:
-- {name: access_key_id, type: String, description: access key id}
-- {name: secret_access_key, type: String, description: secret access key}
-- {name: endpoint, type: String, description: cos/s3 endpoint}
-- {name: bucket_name, type: String, description: cos bucket name}
-- {name: path, type: String, description: path, default: ''}
-- {name: source, type: String, description: source in case of uploads, default:  ''}
-- {name: target, type: String, description: target in case of downloads, default:  ''}
-- {name: recursive, type: Boolean, description: recursive, default: 'False'}
-- {name: operation, type: String, description: operation (mkdir|ls|find|get|put|rm|sync_to_cos|sync_to_local|glob)}
-- {name: log_level, type: String, description: log level, default:  'INFO'}
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: cos_connection, type: String, description: "cos_connection in format: [cos|s3]://access_key_id:secret_access_key@endpoint/bucket/path"}
+- {name: local_path, type: String, description: "local_path for uploads, downloads, sync"}
+- {name: recursive, type: Boolean, description: "recursive", default: "False'"}
+- {name: operation, type: String, description: "operation (mkdir|ls|find|get|put|rm|sync_to_cos|sync_to_local|glob)"}
+
+
+outputs:
 
 
 implementation:
     container:
-        image: docker.io/romeokienzler/claimed-util-cos:0.35
+        image: docker.io/romeokienzler/claimed-util-cos:0.39
         command:
         - sh
         - -ec
         - |
-          ipython ./util-cos.ipynb access_key_id="${0}" secret_access_key="${1}" endpoint="${2}" bucket_name="${3}" path="${4}" source="${5}" target="${6}" recursive="${7}" operation="${8}" log_level="${9}" 
-        - {inputValue: access_key_id}
-        - {inputValue: secret_access_key}
-        - {inputValue: endpoint}
-        - {inputValue: bucket_name}
-        - {inputValue: path}
-        - {inputValue: source}
-        - {inputValue: target}
+          ipython ./claimed_util-cos.ipynb log_level="${0}" cos_connection="${1}" local_path="${2}" recursive="${3}" operation="${4}" 
+        - {inputValue: log_level}
+        - {inputValue: cos_connection}
+        - {inputValue: local_path}
         - {inputValue: recursive}
         - {inputValue: operation}
-        - {inputValue: log_level}
