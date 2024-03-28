@@ -58,3 +58,4 @@ celerybeat.pid
 .pytype/
 cython_debug/
 venv/
+.venv/

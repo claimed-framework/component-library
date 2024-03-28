@@ -7,27 +7,20 @@ spec:
     spec:
       containers:
       - name: util-cos
-        image: docker.io/romeokienzler/claimed-util-cos:0.35
-        command: ["/opt/app-root/bin/ipython","/opt/app-root/src/util-cos.ipynb"]
+        image: docker.io/romeokienzler/claimed-util-cos:0.39
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","claimed_util-cos.ipynb"]
         env:
-        - name: access_key_id
-          value: value_of_access_key_id
-        - name: secret_access_key
-          value: value_of_secret_access_key
-        - name: endpoint
-          value: value_of_endpoint
-        - name: bucket_name
-          value: value_of_bucket_name
-        - name: path
-          value: value_of_path
-        - name: source
-          value: value_of_source
-        - name: target
-          value: value_of_target
+        - name: log_level
+          value: value_of_log_level
+        - name: cos_connection
+          value: value_of_cos_connection
+        - name: local_path
+          value: value_of_local_path
         - name: recursive
           value: value_of_recursive
         - name: operation
           value: value_of_operation
-        - name: log_level
-          value: value_of_log_level
       restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
