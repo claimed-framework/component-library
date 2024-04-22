@@ -7,5 +7,5 @@ setup(name='claimed-component-library',
       author='The CLAIMED authors',
       author_email='claimed-framework@proton.me',
       license='Apache2',
-      packages=[],
+      packages=['claimed-component-library'],
       zip_safe=True)
