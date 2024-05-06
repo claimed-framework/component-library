@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fibonacci
+spec:
+  template:
+    spec:
+      containers:
+      - name: fibonacci
+        image: docker.io/mdorzweiler/claimed-fibonacci:0.1
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/python","claimed_fibonacci.py"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: b
+          value: value_of_b
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
