@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: input-xview-download
+spec:
+  template:
+    spec:
+      containers:
+      - name: input-xview-download
+        image: docker.io/mdorzweiler/claimed-input-xview-download:0.1
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","claimed_input-Xview-download.ipynb"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: username
+          value: value_of_username
+        - name: password
+          value: value_of_password
+        - name: move_to_dir
+          value: value_of_move_to_dir
+        - name: chromedriver_path
+          value: value_of_chromedriver_path
+        - name: max_download_time
+          value: value_of_max_download_time
+        - name: label
+          value: value_of_label
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
