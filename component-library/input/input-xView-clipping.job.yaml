@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: input-xview-clipping
+spec:
+  template:
+    spec:
+      containers:
+      - name: input-xview-clipping
+        image: docker.io/mdorzweiler/claimed-input-xview-clipping:0.1
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","claimed_input-xView-clipping.ipynb"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: directory_path
+          value: value_of_directory_path
+        - name: window_size
+          value: value_of_window_size
+        - name: step_size
+          value: value_of_step_size
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
