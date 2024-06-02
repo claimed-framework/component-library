@@ -1,0 +1,31 @@
+name: image-tiling
+description: "## Xview Dataset tiling  – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: directory_path, type: String, description: "directory_path is the path to the folder with the unzipped .tif images from xview dataset"}
+- {name: pattern, type: String, description: "pattern is the search pattern a user can pass for the program to extract the files from"}
+- {name: tile_size_x, type: String, description: "Each image is cropped using a rectangular window with edge_length tile_size_x and tile_size_y which has to be given in number of pixels"}
+- {name: tile_size_y, type: String, description: ""}
+- {name: stride_x, type: String, description: "For tumbling window stride_x must equal tile_size_x and stride_y must equal tile_size_y"}
+- {name: stride_y, type: String, description: ""}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: docker.io/mdorzweiler/claimed-image-tiling:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          ipython .//Users/maxdorzweiler/Desktop/ibm/clipping/claimed_image-tiling.ipynb log_level="${0}" directory_path="${1}" pattern="${2}" tile_size_x="${3}" tile_size_y="${4}" stride_x="${5}" stride_y="${6}" 
+        - {inputValue: log_level}
+        - {inputValue: directory_path}
+        - {inputValue: pattern}
+        - {inputValue: tile_size_x}
+        - {inputValue: tile_size_y}
+        - {inputValue: stride_x}
+        - {inputValue: stride_y}
