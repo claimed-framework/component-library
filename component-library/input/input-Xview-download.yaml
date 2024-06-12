@@ -1,0 +1,31 @@
+name: input-xview-download
+description: "## Xview Dataset Download   – CLAIMED V0.1"
+
+inputs:
+- {name: log_level, type: String, description: "update log level", default: "INFO"}
+- {name: username, type: String, description: "username for the Xview webpage to authorize login"}
+- {name: password, type: String, description: "password for the Xview webpage to authorize login"}
+- {name: move_to_dir, type: String, description: "move_to_dir the directory where the dataset should be saved"}
+- {name: chromedriver_path, type: String, description: "chromedriver_path the directory where the local copy of chromedriver is saved"}
+- {name: max_download_time, type: String, description: "max_download_time before timeout, must be ajusted acording to the file size and internet speed"}
+- {name: label, type: String, description: "standing for TI=Traning Images, TL=Training Lables, VI=Validation Images"}
+
+
+outputs:
+
+
+implementation:
+    container:
+        image: docker.io/mdorzweiler/claimed-input-xview-download:0.1
+        command:
+        - sh
+        - -ec
+        - |
+          ipython ./claimed_input-Xview-download.ipynb log_level="${0}" username="${1}" password="${2}" move_to_dir="${3}" chromedriver_path="${4}" max_download_time="${5}" label="${6}" 
+        - {inputValue: log_level}
+        - {inputValue: username}
+        - {inputValue: password}
+        - {inputValue: move_to_dir}
+        - {inputValue: chromedriver_path}
+        - {inputValue: max_download_time}
+        - {inputValue: label}
