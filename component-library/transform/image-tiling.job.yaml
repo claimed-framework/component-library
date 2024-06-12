@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: image-tiling
+spec:
+  template:
+    spec:
+      containers:
+      - name: image-tiling
+        image: docker.io/mdorzweiler/claimed-image-tiling:0.1
+        workingDir: /opt/app-root/src/
+        command: ["/opt/app-root/bin/ipython","/Users/maxdorzweiler/Desktop/ibm/clipping/claimed_image-tiling.ipynb"]
+        env:
+        - name: log_level
+          value: value_of_log_level
+        - name: directory_path
+          value: value_of_directory_path
+        - name: pattern
+          value: value_of_pattern
+        - name: tile_size_x
+          value: value_of_tile_size_x
+        - name: tile_size_y
+          value: value_of_tile_size_y
+        - name: stride_x
+          value: value_of_stride_x
+        - name: stride_y
+          value: value_of_stride_y
+      restartPolicy: OnFailure
+      imagePullSecrets:
+        - name: image_pull_secret
