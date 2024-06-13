@@ -20,8 +20,9 @@ All tools used and presented in this course are open source or based  on open so
 
 ![Screenshot (978)](https://github.com/SE-LAPS/component-library/assets/87580847/71307138-4bc9-4b4b-8822-bbe6ff0068bb)
 
-
 # ▶ Programming Assignment: Building and serialising Keras models
+
+![Screenshot (979)](https://github.com/SE-LAPS/component-library/assets/87580847/aac997ad-a251-437c-9058-f04f3af12f8e)
 
 # ▶ Programming Assignment: Anomaly Detection
 
