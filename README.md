@@ -29,3 +29,5 @@ All tools used and presented in this course are open source or based  on open so
 ![Screenshot (980)](https://github.com/SE-LAPS/component-library/assets/87580847/85aa157e-c6d8-4e9d-b828-422fe89055e6)
 
 # ▶ Programming Assignment: Apache SystemDS
+
+![Screenshot (981)](https://github.com/SE-LAPS/component-library/assets/87580847/d85c03eb-2bfd-48f2-b12a-17fec5fd1a98)
