@@ -18,6 +18,9 @@ All tools used and presented in this course are open source or based  on open so
 
 # ▶ Programming Assignment: Warmup assignment
 
+![Screenshot (978)](https://github.com/SE-LAPS/component-library/assets/87580847/71307138-4bc9-4b4b-8822-bbe6ff0068bb)
+
+
 # ▶ Programming Assignment: Building and serialising Keras models
 
 # ▶ Programming Assignment: Anomaly Detection
