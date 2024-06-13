@@ -19,3 +19,5 @@ All tools used and presented in this course are open source or based  on open so
 # ▶ Programming Assignment: Warmup assignment
 
 # ▶ Programming Assignment: Building and serialising Keras models
+
+# ▶ Programming Assignment: Anomaly Detection
