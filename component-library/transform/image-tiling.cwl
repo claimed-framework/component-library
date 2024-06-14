@@ -6,7 +6,7 @@ baseCommand: "claimed"
 inputs:
   component:
     type: string
-    default: docker.io/mdorzweiler/claimed-image-tiling:0.1
+    default: docker.io/claimed/claimed-image-tiling:0.1
     inputBinding:
       position: 1
       prefix: --component
@@ -22,33 +22,33 @@ inputs:
     inputBinding:
       position: 3
       prefix: --directory_path
-  pattern:
+  destination:
     type: string
     default: None
     inputBinding:
       position: 4
-      prefix: --pattern
+      prefix: --destination
   tile_size_x:
-    type: string
-    default: None
+    type: int
+    default: 64
     inputBinding:
       position: 5
       prefix: --tile_size_x
   tile_size_y:
-    type: string
-    default: None
+    type: int
+    default: 64
     inputBinding:
       position: 6
       prefix: --tile_size_y
   stride_x:
-    type: string
-    default: None
+    type: int
+    default: 32
     inputBinding:
       position: 7
       prefix: --stride_x
   stride_y:
-    type: string
-    default: None
+    type: int
+    default: 32
     inputBinding:
       position: 8
       prefix: --stride_y

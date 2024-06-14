@@ -7,16 +7,16 @@ spec:
     spec:
       containers:
       - name: image-tiling
-        image: docker.io/mdorzweiler/claimed-image-tiling:0.1
+        image: docker.io/claimed/claimed-image-tiling:0.1
         workingDir: /opt/app-root/src/
-        command: ["/opt/app-root/bin/ipython","/Users/maxdorzweiler/Desktop/ibm/clipping/claimed_image-tiling.ipynb"]
+        command: ["/opt/app-root/bin/ipython","claimed_image-tiling.ipynb"]
         env:
         - name: log_level
           value: value_of_log_level
         - name: directory_path
           value: value_of_directory_path
-        - name: pattern
-          value: value_of_pattern
+        - name: destination
+          value: value_of_destination
         - name: tile_size_x
           value: value_of_tile_size_x
         - name: tile_size_y
