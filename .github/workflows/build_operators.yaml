@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
     
 env:
-  repository: docker.io/romeokienzler
+  repository: docker.io/claimed
   log_level: INFO
 
 jobs:
