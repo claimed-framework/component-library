@@ -8,7 +8,7 @@ on:
     
 env:
   version: 0.8
-  repository: romeokienzler
+  repository: claimed
   create_image: True
 
 jobs:
