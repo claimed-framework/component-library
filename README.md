@@ -3,7 +3,7 @@
 
 
 
-# CLAIMED - It's time to concentrate on your code only
+# CLAIMED - It's time to concentrate on your code only Stavros
 
 For more information, please visit the project's [website](https://claimed-framework.github.io/)
 
