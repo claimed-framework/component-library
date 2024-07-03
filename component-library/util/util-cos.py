@@ -40,11 +40,11 @@ operation = os.environ.get('operation')
 # Extract values from connection string
 if cos_connection is not None:
     (access_key_id, secret_access_key, endpoint, cos_path) = explode_connection_string(cos_connection)
-    bucket_name, cos_path = cos_path.split('/', 1)
+else:
+    cos_path = os.path.join(bucket_name, cos_path)
 
-assert (access_key_id is not None and secret_access_key is not None and endpoint is not None and bucket_name is not None
-        and cos_path is not None), \
-    "Provide a cos_connection ([cos|s3]://access_key_id:secret_access_key@endpoint/bucket/path) or each value separatly."
+assert access_key_id is not None and secret_access_key is not None and endpoint is not None and cos_path is not None, \
+    "Provide a cos_connection (s3://access_key_id:secret_access_key@endpoint/bucket/path) or each value separatly."
 
 
 def main():
@@ -61,27 +61,27 @@ def main():
     
     if operation == 'mkdir':
         logging.info('Make directory ' + cos_path)
-        s3.mkdir(os.path.join(bucket_name, cos_path))
+        s3.mkdir(cos_path)
     elif operation == 'ls':
         logging.info('List path ' + cos_path)
-        print_list(s3.ls(os.path.join(bucket_name, cos_path)))
+        print_list(s3.ls(cos_path))
     elif operation == 'find':
         logging.info('Find path ' + cos_path)
-        print_list(s3.find(os.path.join(bucket_name, cos_path)))
+        print_list(s3.find(cos_path))
     elif operation == 'upload' and not recursive:
         logging.info('Put path ' + cos_path)
-        print(s3.put(local_path,os.path.join(bucket_name, cos_path)))
+        print(s3.put(local_path,cos_path))
     elif operation == 'download' and not recursive:
         logging.info('Get path ' + cos_path)
-        s3.get(os.path.join(bucket_name, cos_path), local_path)
+        s3.get(cos_path, local_path)
     elif operation == 'rm':
         logging.info('Remove path ' + cos_path)
-        s3.rm(os.path.join(bucket_name, cos_path), recursive=recursive)
+        s3.rm(cos_path, recursive=recursive)
     elif operation == 'glob':
         logging.info('Glob path ' + cos_path)
-        print_list(s3.glob(os.path.join(bucket_name, cos_path)))
+        print_list(s3.glob(cos_path))
     elif operation == 'sync_to_cos' or operation == 'upload':
-        logging.info(f'{operation} {local_path} to {os.path.join(bucket_name, cos_path)}')
+        logging.info(f'{operation} {local_path} to {cos_path}')
         for root, dirs, files in os.walk(local_path, topdown=False):
             # Sync files in current folder
             for name in tqdm.tqdm(files, desc=root):
@@ -101,11 +101,11 @@ def main():
                     logging.debug(f'uploading {file} to {cos_file}')
                     s3.put(file, cos_file)
     elif operation == 'sync_to_local' or operation == 'download':
-        logging.info(f'{operation} {os.path.join(bucket_name, cos_path)} to {local_path}')
-        for root, dirs, files in s3.walk(os.path.join(bucket_name, cos_path)):
+        logging.info(f'{operation} {cos_path} to {local_path}')
+        for root, dirs, files in s3.walk(cos_path):
             # Sync directories in current folder
             for name in dirs:
-                local_dir = os.path.join(local_path, os.path.relpath(root, os.path.join(bucket_name, cos_path)),
+                local_dir = os.path.join(local_path, os.path.relpath(root, cos_path),
                                          name).replace('/./', '/')
                 if not os.path.isdir(local_dir):
                     logging.debug(f'create dir {local_dir}')
@@ -113,7 +113,7 @@ def main():
             # Sync files in current folder
             for name in tqdm.tqdm(files, desc=root):
                 cos_file = os.path.join(root, name)
-                local_file = os.path.join(local_path, os.path.relpath(root, os.path.join(bucket_name, cos_path)),
+                local_file = os.path.join(local_path, os.path.relpath(root, cos_path),
                                           name).replace('/./', '/')
                 logging.debug(f'processing {cos_file}')
                 if operation == 'sync_to_local' and os.path.isfile(local_file):
