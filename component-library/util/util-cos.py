@@ -87,7 +87,7 @@ def main():
             for name in tqdm.tqdm(files, desc=root):
                 file = os.path.join(root, name)
                 logging.debug(f'processing {file}')
-                cos_file = os.path.join(bucket_name, cos_path,
+                cos_file = os.path.join(cos_path,
                                         os.path.relpath(root, local_path), name).replace('/./', '/')
                 if operation == 'sync_to_cos' and s3.exists(cos_file):
                     logging.debug(f'exists {cos_file}')
