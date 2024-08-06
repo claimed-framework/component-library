@@ -7,7 +7,8 @@
 
 For more information, please visit the project's [website](https://claimed-framework.github.io/)
 
-Weekly community call (co-located with Elyra atm)  
-[https://ibm.webex.com/meet/romeo.kienzler1](https://ibm.webex.com/meet/romeo.kienzler1)  
-Every Friday, 8:30 AM PST, 11:30 AM EST, 5:30 PM CET, 10 PM IST
+## Credits
+
+TensorLakeHouse is supported by the EU’s Horizon Europe program under Grant Agreement number 101131841 and also received funding from the Swiss State Secretariat for Education, Research and Innovation (SERI) and the UK Research and Innovation (UKRI).
+
 
