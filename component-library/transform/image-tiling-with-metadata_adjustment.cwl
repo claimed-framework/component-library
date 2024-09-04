@@ -6,7 +6,7 @@ baseCommand: "claimed"
 inputs:
   component:
     type: string
-    default: docker.io/claimed/claimed-image-tiling:0.1
+    default: docker.io/lorenzweingart/claimed-image-tiling-with-metadata-adjustment:0.1
     inputBinding:
       position: 1
       prefix: --component
