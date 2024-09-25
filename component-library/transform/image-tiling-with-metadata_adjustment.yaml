@@ -1,4 +1,4 @@
-name: image-tiling
+name: image-tiling-with-metadata-adjustment
 description: "## Xview Dataset clipping  – CLAIMED V0.1"
 
 inputs:
@@ -16,12 +16,12 @@ outputs:
 
 implementation:
     container:
-        image: docker.io/claimed/claimed-image-tiling:0.1
+        image: docker.io/lorenzweingart/claimed-image-tiling-with-metadata-adjustment:0.1
         command:
         - sh
         - -ec
         - |
-          ipython ./claimed_image-tiling.ipynb log_level="${0}" directory_path="${1}" destination="${2}" tile_size_x="${3}" tile_size_y="${4}" stride_x="${5}" stride_y="${6}" 
+          ipython ./claimed_image-tiling-with-metadata_adjustment.ipynb log_level="${0}" directory_path="${1}" destination="${2}" tile_size_x="${3}" tile_size_y="${4}" stride_x="${5}" stride_y="${6}" 
         - {inputValue: log_level}
         - {inputValue: directory_path}
         - {inputValue: destination}

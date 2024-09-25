@@ -1,15 +1,15 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: image-tiling
+  name: image-tiling-with-metadata-adjustment
 spec:
   template:
     spec:
       containers:
-      - name: image-tiling
-        image: docker.io/claimed/claimed-image-tiling:0.1
+      - name: image-tiling-with-metadata-adjustment
+        image: docker.io/lorenzweingart/claimed-image-tiling-with-metadata-adjustment:0.1
         workingDir: /opt/app-root/src/
-        command: ["/opt/app-root/bin/ipython","claimed_image-tiling.ipynb"]
+        command: ["/opt/app-root/bin/ipython","claimed_image-tiling-with-metadata_adjustment.ipynb"]
         env:
         - name: log_level
           value: value_of_log_level
