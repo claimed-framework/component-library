@@ -3,8 +3,6 @@ name: Build and push CLAIMED operators
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
     
 env:
   repository: docker.io/claimed
