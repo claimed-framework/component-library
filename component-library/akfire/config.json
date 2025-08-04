@@ -1,0 +1,193 @@
+{
+  "output_dir": "data_inputs",
+  "credentials_path": "../credentials.json",
+  "training_data_path": "training_data",
+  "training_models_path": "training_models",
+  "outputs_path": "data_outputs",
+  "figures_path": "figures",
+  "years": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "last_year": 2050,
+  "folders": {
+    "shapefile": "shape_file_country_codes",
+    "gee": "EarthEngineData",
+    "cds": "CDSData",
+    "infrastructure": "infrastructures"
+  },
+  "shapefile": {
+    "url": "",
+    "archive_name": "",
+    "filtered_shapefile_name": "",
+    "rasterized_zarr": "",
+    "attributes_filter": {
+      "values": [
+        "AL",
+        "AT",
+        "BE",
+        "BG",
+        "CH",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "HR",
+        "HU",
+        "IE",
+        "IS",
+        "IT",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "ME",
+        "MK",
+        "MT",
+        "NL",
+        "NO",
+        "PL",
+        "PT",
+        "RO",
+        "RS",
+        "SE",
+        "SI",
+        "SK",
+        "TR"
+      ]
+    },
+    "bounding_box": [],
+    "raster_resolution": 2500,
+    "naming_pattern": "country_{code}",
+    "adjust_boundaries": false
+  },
+  "gee": {
+    "output_files": {
+      "modis_lc": "",
+      "modis_burn_date": ""
+    },
+    "collection": {
+      "lc": "",
+      "burn": ""
+    },
+    "band": {
+      "lc": "LC_Type1",
+      "burn": "BurnDate"
+    },
+    "scale": 500,
+    "crs": "EPSG:3035",
+    "frequency": {
+      "lc": "",
+      "burn": ""
+    },
+    "max_workers": 8
+  },
+  "cds": {
+    "base_request": {
+      "time_aggregation": "seasonal_indicators",
+      "version": "v1_0"
+    },
+    "scenarios": {
+      "historical": [
+        "2001_2005"
+      ],
+      "rcp4_5": [
+        "2006_2010",
+        "2011_2015",
+        "2016_2020",
+        "2021_2025",
+        "2026_2030",
+        "2031_2035",
+        "2036_2040",
+        "2041_2045",
+        "2046_2050"
+      ],
+      "rcp8_5": [
+        "2006_2010",
+        "2011_2015",
+        "2016_2020",
+        "2021_2025",
+        "2026_2030",
+        "2031_2035",
+        "2036_2040",
+        "2041_2045",
+        "2046_2050"
+      ]
+    },
+    "product_types": [],
+    "dataset": "",
+    "variables": [],
+    "scenario": "rcp85",
+    "overwrite": false
+  },
+  "infrastructure": {
+    "url": "",
+    "files_to_extract": []
+  },
+  "population_cities": {
+    "centres_type": [
+      "city",
+      "town"
+    ]
+  },
+  "xgboost": {
+    "model": "xgboost",
+    "variables_to_drop": [],
+    "bayesian_opt": 0,
+    "default_params": {},
+    "xgboost_monotonic_constraints": [],
+    "train_rounds": 0,
+    "early_stopping_rounds": 0,
+    "prob_threshold": 0,
+    "monte_carlo_iterations": 0,
+    "optimized_params": {}
+  },
+  "logistic_regression": {
+    "model": "logistic_regression",
+    "variables_to_drop": [],
+    "standardize_features": [],
+    "reciprocal_standardize_features": [],
+    "polynomial_features": {},
+    "prob_threshold": 0,
+    "params": {},
+    "train_test_split": {
+      "test_size": 0
+    },
+    "evaluation": {
+      "metrics": [],
+      "thresholds": {}
+    },
+    "random_state": 0,
+    "six_years_window": 0,
+    "squared": 0,
+    "num_sim": 0
+  },
+  "prediction_data_scenario": "rcp85",
+  "training_data_scenario": "rcp45"
+}
