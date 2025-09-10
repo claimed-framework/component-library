@@ -6,8 +6,8 @@ build-backend = "setuptools.build_meta"
 version_file = "src/_version.py"
 
 [project]
-name="component-library"
-dynamic = ["version"]
+name="claimed"
+version = "0.2.0"
 authors = [
   { name="The CLAIMED authors", email="claimed-framework@proton.me"},
 ]
@@ -15,7 +15,7 @@ maintainers = [
   { name="Romeo Kienzler", email="claimed-framework@proton.me"},
   { name="Benedikt Blumenstiel"},
 ]
-description = "Library for using CLAIMED operators in code"
+description = "The CLAIMED framework includes a library of reusable operators, a CLI and the CLAIMED Component Compiler (C3)."
 readme = "README.md"
 requires-python=">=3.9"
 license = {file = "LICENSE.txt"}
@@ -31,10 +31,11 @@ dependencies = [
   "botocore",
   "s3fs",
   "claimed-c3",
+  "claimed-cli",
 ]
 
 [tool.setuptools.packages.find]
-include = ["component-library*"]
+include = ["claimed*"]
 
 [project.urls]
 "Homepage" = "https://github.com/claimed-framework/component-library"
