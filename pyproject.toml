@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "src/_version.py"
+
+[project]
+name="component-library"
+dynamic = ["version"]
+authors = [
+  { name="The CLAIMED authors", email="claimed-framework@proton.me"},
+]
+maintainers = [
+  { name="Romeo Kienzler", email="claimed-framework@proton.me"},
+  { name="Benedikt Blumenstiel"},
+]
+description = "Library for using CLAIMED operators in code"
+readme = "README.md"
+requires-python=">=3.9"
+license = {file = "LICENSE.txt"}
+keywords = ["CLAIMED", "component-library"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "aiobotocore",
+  "botocore",
+  "s3fs",
+  "claimed-c3",
+]
+
+[tool.setuptools.packages.find]
+include = ["component-library*"]
+
+[project.urls]
+"Homepage" = "https://github.com/claimed-framework/component-library"
+"Bug Tracker" = "https://github.com/claimed-framework/component-library/issues"
+
