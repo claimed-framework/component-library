@@ -108,4 +108,6 @@ def run(cos_connection, local_path, operation, recursive = False, log_level = lo
 # In[ ]:
 
 
-run(cos_connection, local_path, operation, recursive, log_level)
+if __name__ == "__main__":
+    run(cos_connection, local_path, operation, recursive, log_level)
+
